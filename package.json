@@ -18,6 +18,7 @@
   "scripts": {
     "dev": "yarn start",
     "precommit": "lint-staged",
+    "build": "tsc",
     "test": "vitest",
     "test:compilation": "tsc --noEmit",
     "lint": "eslint -c .eslintrc.js",

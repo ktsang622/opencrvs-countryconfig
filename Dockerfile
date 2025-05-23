@@ -9,10 +9,13 @@ COPY package.json package.json
 COPY tsconfig.json tsconfig.json
 COPY yarn.lock yarn.lock
 COPY src src
-RUN yarn install --production
+COPY typings ./typings
+#RUN yarn install --production
+
+RUN yarn install
 
 EXPOSE 3040
 
-ADD start-prod.sh /usr/src/app
-RUN chmod +x ./start-prod.sh
-CMD ["./start-prod.sh"]
+ADD start-demo.sh /usr/src/app
+RUN chmod +x ./start-demo.sh
+CMD ["./start-demo.sh"]

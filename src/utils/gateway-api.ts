@@ -40,7 +40,11 @@ const post = async <T = any>({
     throw new Error(`not ok: ${await response.text()}`)
   }
 
-  return response.json() as Promise<{ data: T }>
+  const json = await response.json()
+  if (json.errors) {
+    throw new Error(`GraphQL error: ${JSON.stringify(json.errors)}`)
+  }
+  return json as { data: T }
 }
 
 export const confirmRegistration = (
@@ -100,28 +104,38 @@ type GetUser = {
       hierarchy: Array<{
         id: string
       }>
-    }
+    } | null
   }
 }
+
+type LocationHierarchy = { id: string; name: string }
 
 export const fetchUserLocationHierarchy = async (
   userId: string,
   { headers }: { headers: Record<string, any> }
 ) => {
-  const res = await post<GetUser>({
-    query: /* GraphQL */ `
-      query fetchUser($userId: String!) {
-        getUser(userId: $userId) {
-          primaryOffice {
-            hierarchy {
+  try {
+    const res = await post<GetUser>({
+      query: /* GraphQL */ `
+        query fetchUser($userId: String!) {
+          getUser(userId: $userId) {
+            primaryOffice {
               id
+              hierarchy {
+                id
+              }
             }
           }
         }
-      }
-    `,
-    variables: { userId },
-    headers
-  })
-  return res.data.getUser.primaryOffice.hierarchy.map(({ id }) => id)
+      `,
+      variables: { userId },
+      headers
+    })
+    if (!res.data.getUser || !res.data.getUser.primaryOffice) {
+      throw new Error(`User (${userId}) or their primaryOffice is missing in GraphQL response`)
+    }
+    return res.data.getUser.primaryOffice.hierarchy.map(({ id }) => id)
+  } catch (error) {
+      throw new Error(`Failed to fetch user location hierarchy: ${error}`)
+  }
 }
