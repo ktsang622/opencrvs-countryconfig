@@ -27,6 +27,7 @@ const IDTypes = {
   NATIONAL_ID: 'NATIONAL_ID',
   PASSPORT: 'PASSPORT',
   BIRTH_REGISTRATION_NUMBER: 'BIRTH_REGISTRATION_NUMBER',
+  SOCIAL_SECURITY_CARD: 'SOCIAL_SECURITY_CARD',
   NONE: 'NONE'
 } as const
 
@@ -61,6 +62,11 @@ const idTypeMessageDescriptors = {
     defaultMessage: 'Birth Registration Number',
     description: 'Option for form field: Type of ID',
     id: 'form.field.label.iDTypeBRN'
+  },
+  SOCIAL_SECURITY_CARD: {
+    defaultMessage: 'Social Security Card',
+    description: 'Option for form field: Type of ID',
+    id: 'form.field.label.iDTypeSSC'
   },
   NONE: {
     defaultMessage: 'None',
@@ -203,6 +209,24 @@ const getIdFields = (person: PersonType): FieldConfig[] => [
         type: 'HIDE',
         conditional: field(`${person}.idType`)
           .or((field) => field.isUndefined().not.inArray(['PASSPORT']))
+          .apply()
+      }
+    ]
+  },
+  {
+    id: `${person}.ssc`,
+    type: 'TEXT',
+    required: true,
+    label: {
+      defaultMessage: 'ID Number',
+      description: 'This is the label for the field',
+      id: `event.birth.action.declare.form.section.${person}.field.ssc.label`
+    },
+    conditionals: [
+      {
+        type: 'HIDE',
+        conditional: field(`${person}.idType`)
+          .or((field) => field.isUndefined().not.inArray(['SOCIAL_SECURITY_CARD']))
           .apply()
       }
     ]

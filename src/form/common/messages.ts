@@ -486,6 +486,11 @@ export const formMessageDescriptors = {
     description: 'Label for radio option Passport',
     id: 'form.field.label.docTypePassport'
   },
+  docTypeSSC: {
+    defaultMessage: 'Social security card',
+    description: 'Label for select option social security card',
+    id: 'form.field.label.docTypeSSC'
+  },
   docTypeBirthCert: {
     defaultMessage: 'Birth certificate',
     description: 'Label for select option birth certificate',
@@ -865,6 +870,11 @@ export const formMessageDescriptors = {
     defaultMessage: 'Passport',
     description: 'Option for form field: Type of ID',
     id: 'form.field.label.iDTypePassport'
+  },
+  iDTypeSSC: {
+    defaultMessage: 'Social Security Card',
+    description: 'Option for form field: Type of ID',
+    id: 'form.field.label.iDTypeSSC'
   },
   iDTypeDrivingLicense: {
     defaultMessage: 'Drivers License',

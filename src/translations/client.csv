@@ -190,7 +190,7 @@ config.application.deathTabTitle,The title for death tab,Death,Décès
 config.application.deathTabTitleExport,The title for death tab for VSExport,Deaths,Décès
 config.application.emptystate,Vital Statistics Export Empty State Text,The previous month's vital statistics data (based on vital event registrations occurring within that month) will become available for you to export as of the 1st of every month. Large CSV files cannot be opened in Excel and should therefore be opened in a statistical program such as {posit}.,Les données statistiques vitales du mois précédent (basées sur les enregistrements d'événements vitaux survenus au cours de ce mois) seront disponibles pour l'exportation à partir du 1er de chaque mois. Les grands fichiers CSV ne peuvent pas être ouverts dans Excel et doivent donc être ouverts dans un programme statistique tel que {posit}.
 config.application.export,Download Export CSV,Export,Export
-config.application.vitalStatistics,Vital Statistics Export,"Month-{month}-Farajaland-{event, select, birth{birth} death{death} other{birth}}-event-statistics.csv {fileSize}","Mois-{month}-Farajaland-{event, select, birth{birth} death{death} other{birth}}-événement-statistiques.csv {fileSize}"
+config.application.vitalStatistics,Vital Statistics Export,"Month-{month}-Toppan-{event, select, birth{birth} death{death} other{birth}}-event-statistics.csv {fileSize}","Mois-{month}-Toppan-{event, select, birth{birth} death{death} other{birth}}-événement-statistiques.csv {fileSize}"
 config.application.vsExportDownloadFailed,Vital Statistics Export Empty State Text,Sorry! Something went wrong,Désolé ! Quelque chose s'est mal passé
 config.application.vsexport,VS Export tab,Vital statistics,Statistiques vitales
 config.certTemplate,Label for certificate templates,Certificate Template,Modèle de certificat
@@ -232,7 +232,7 @@ constants.collectedBy,The collected by sec text,Collected by,Collecté par
 constants.collectorDetails,Label for collector details,Collector Details,Information  du collecteur
 constants.comment,Label for rejection comment,Comment,Commentaire
 constants.config,,Configuration,Configuration
-constants.countryName,Name of the OpenCRVS implementation country,Farajaland,Farajaland
+constants.countryName,Name of the OpenCRVS implementation country,Toppan,Toppan
 constants.customTimePeriod,Label for Custom time period,Custom time period,Période personnalisée
 constants.dataEntryClerk,The description for DATA_ENTRY_CLERK type,Data entry clerk,Commis à la saisie des données
 constants.dateOfDeclaration,Date of declaration label,Date of declaration,Date de la déclaration
@@ -567,7 +567,7 @@ countries.ESH,,Western Sahara,Sahara occidental
 countries.ESP,,Spain,Espagne
 countries.EST,,Estonia,Estonie
 countries.ETH,,Ethiopia,Éthiopie
-countries.FAR,,Farajaland,Farajaland
+countries.FAR,,Toppan,Toppan
 countries.FIN,,Finland,Finlande
 countries.FJI,,Fiji,Fidji
 countries.FLK,,Falkland Islands (Malvinas),Falkland Islands (Malvinas)
@@ -1018,6 +1018,7 @@ form.field.label.iDTypeNoID,,No ID available,Aucune pièce d'identité disponibl
 form.field.label.iDTypeOther,,Other,Autre
 form.field.label.iDTypeOtherLabel,,Other type of ID,Autre type de carte d'identité
 form.field.label.iDTypePassport,,Passport,Passeport
+form.field.label.iDTypeSSC,,Social security card,Social security card
 form.field.label.iDTypeRefugeeNumber,,Refugee Number,Numéro de réfugié
 form.field.label.imageUpload.uploadedList,,Uploaded:,Téléchargé :
 form.field.label.informant,Informant Label,Informant,Informateur
@@ -1500,7 +1501,7 @@ nationality.ESH,,Sahrawi,Sahraoui
 nationality.ESP,,Spanish,Espagnol
 nationality.EST,,Estonian,Estonien
 nationality.ETH,,Ethiopian,Éthiopien
-nationality.FAR,,Farajalandian,Farajalandien
+nationality.FAR,,Toppanian,Toppanien
 nationality.FIN,,Finnish,Finlandais
 nationality.FJI,,Fijian,Fidjien
 nationality.FLK,,Falkland Islander,Insulaire des Falkland
@@ -2080,13 +2081,13 @@ review.form.section.review.title,Form section title for Review,Review,Réviser
 review.formData.header,,"{isDraft, select, true {Check responses with the informant before sending for review} other {Review the answers with the supporting documents}}","{isDraft, select, true {Vérifiez les réponses auprès de l'informateur avant de les envoyer pour examen.} other {Examinez les réponses avec les documents justificatifs}}"
 review.header.subject.subjectWitName,Header subject that shows which declaration type to review with informant name,"{eventType, select, birth {Birth} death {Death} other {Marriage} } declaration for {name}","{eventType, select, birth {Naissance} death {Décès} other {Mariage}} declaration for {name}"
 review.header.subject.subjectWithoutName,Header subject that shows which declaration type to review,"{eventType, select, birth {Birth} death {Death} other {Marriage}} Declaration","{eventType, select, birth {Naissance} death {Décès} other {Marriage}} Déclaration"
-review.header.title.govtName,Header title that shows bgd govt name,Republic of Farajaland,République du Farajaland
+review.header.title.govtName,Header title that shows bgd govt name,Republic of Toppan,République du Toppan
 review.inputs.additionalComments,Label for input Additional comments,Comments,Des commentaires supplémentaires ?
 review.inputs.brideSignature,Label for informants signature input,Signature of Bride,Signature de la mariée
 review.inputs.groomSignature,Label for informants signature input,Signature of Groom,Signature du marié
 review.inputs.informantsSignature,Label for informants signature input,Signature of informant,Signature de l'informateur
 review.inputs.supportingDocuments,Section heading title for supporting documents,Supporting documents,Documents justificatifs
-review.inputs.terms,Label for signature terms,"We, the undersigned declare under penalty of perjury under the laws of Farajaland that the forgoing information is true and correct to the best of our knowledge and belief. We further declare that no legal objections to the marriage is known and hereby apply for a certificate of marriage","Nous, les soussignés, déclarons sous peine de parjure en vertu des lois du Farajaland que les informations ci-dessus sont vraies et correctes au mieux de nos connaissances et de nos convictions. Nous déclarons également qu'aucune objection légale au mariage n'est connue et demandons par la présente un certificat de mariage."
+review.inputs.terms,Label for signature terms,"We, the undersigned declare under penalty of perjury under the laws of Toppan that the forgoing information is true and correct to the best of our knowledge and belief. We further declare that no legal objections to the marriage is known and hereby apply for a certificate of marriage","Nous, les soussignés, déclarons sous peine de parjure en vertu des lois du Toppan que les informations ci-dessus sont vraies et correctes au mieux de nos connaissances et de nos convictions. Nous déclarons également qu'aucune objection légale au mariage n'est connue et demandons par la présente un certificat de mariage."
 review.inputs.witnessOneSignature,Label for informants signature input,Signature of Witness 1,Signature du témoin 1
 review.inputs.witnessTwoSignature,Label for informants signature input,Signature of Witness 2,Signature du témoin 2
 review.modal.desc.submitConfirmation,Submit description text on modal,"{completeDeclaration, select, true {This declaration will be sent for review.} other {This incomplete declaration will be sent for review.}}","{completeDeclaration, select, true {Cette déclaration sera envoyée au greffier pour qu'il l'examine.} other {Cette déclaration sera envoyée au greffier pour être complétée. Veuillez informer l'informateur qu'il devra se présenter au bureau avec les informations manquantes et les documents justificatifs.}}"
@@ -2107,7 +2108,7 @@ review.rejection.form.title,Rejection form title,Reason for rejection?,Quelle mi
 review.signature.clear,Label for button that clear signature input,Clear,Supprimer
 review.signature.delete,Label for button that deletes signature,Delete,Supprimer
 review.signature.description,Label awknowledging the correctness of the declaration,"I, the undersigned, hereby declare that the particulars in this form are true and correct to the best of my knowledge.","Je soussigné(e) déclare par la présente que les informations contenues dans ce formulaire sont, à ma connaissance, vraies et correctes."
-review.signature.input.description,Description awknowledging the correctness of the declaration,"By signing this document with an electronic signature, I agree that such signature will be valid as handwritten signatures to the extent allowed by the laws of Farajaland.","En signant ce document avec une signature électronique, j'accepte que cette signature soit valable comme les signatures manuscrites dans la mesure où les lois du Farajaland le permettent."
+review.signature.input.description,Description awknowledging the correctness of the declaration,"By signing this document with an electronic signature, I agree that such signature will be valid as handwritten signatures to the extent allowed by the laws of Toppan.","En signant ce document avec une signature électronique, j'accepte que cette signature soit valable comme les signatures manuscrites dans la mesure où les lois du Toppan le permettent."
 review.signature.open,Label for button that opens the signature input,Sign,Signer
 reviewAction.description,The description for review action,"By clicking register, you confirm that the information entered is correct and the member can be registered.","En cliquant sur enregistrer, vous confirmez que les informations saisies sont correctes et que le membre peut être enregistré."
 reviewAction.register,The label for register button of review action,Register,Enregistrer

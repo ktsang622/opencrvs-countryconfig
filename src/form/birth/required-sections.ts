@@ -28,6 +28,7 @@ export const birthDocumentExtraValue = {
 
 export const birthDocumentType = {
   BIRTH_CERTIFICATE: 'BIRTH_CERTIFICATE',
+  SOCIAL_SECURITY_CARD: 'SOCIAL_SECURITY_CARD',
   NATIONAL_ID: 'NATIONAL_ID',
   PASSPORT: 'PASSPORT',
   OTHER: 'OTHER',
@@ -90,6 +91,10 @@ export const documentsSection = {
               label: formMessageDescriptors.docTypePassport
             },
             {
+              value: birthDocumentType.SOCIAL_SECURITY_CARD,
+              label: formMessageDescriptors.docTypeSSC
+            },
+            {
               value: birthDocumentType.BIRTH_CERTIFICATE,
               label: formMessageDescriptors.docTypeBirthCert
             },
@@ -126,6 +131,10 @@ export const documentsSection = {
               label: formMessageDescriptors.docTypePassport
             },
             {
+              value: birthDocumentType.SOCIAL_SECURITY_CARD,
+              label: formMessageDescriptors.docTypeSSC
+            },
+            {
               value: birthDocumentType.BIRTH_CERTIFICATE,
               label: formMessageDescriptors.docTypeBirthCert
             },
@@ -160,6 +169,10 @@ export const documentsSection = {
             {
               value: birthDocumentType.PASSPORT,
               label: formMessageDescriptors.docTypePassport
+            },
+            {
+              value: birthDocumentType.SOCIAL_SECURITY_CARD,
+              label: formMessageDescriptors.docTypeSSC
             },
             {
               value: birthDocumentType.BIRTH_CERTIFICATE,

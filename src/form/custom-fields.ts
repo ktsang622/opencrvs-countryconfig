@@ -119,6 +119,14 @@ const idTypeOptions = [
     }
   },
   {
+    value: 'SOCIAL_SECURITY_CARD' as const,
+    label: {
+      defaultMessage: 'Social Security Card',
+      description: 'Option for form field: Type of ID',
+      id: 'form.field.label.iDTypeSSC'
+    }
+  },
+  {
     value: 'BIRTH_REGISTRATION_NUMBER' as const,
     label: {
       defaultMessage: 'Birth Registration Number',

@@ -49,13 +49,13 @@ export const identityNumberMapping = {
   NATIONAL_ID: 'NATIONAL_ID',
   BIRTH_REGISTRATION_NUMBER: 'BIRTH_REGISTRATION_NUMBER',
   PASSPORT: 'PASSPORT',
+  SOCIAL_SECURITY_CARD: 'SOCIAL_SECURITY_CARD',
   DEATH_REGISTRATION_NUMBER: 'DEATH_REGISTRATION_NUMBER',
   DRIVING_LICENSE: 'DRIVING_LICENSE',
   REFUGEE_NUMBER: 'REFUGEE_NUMBER',
   ALIEN_NUMBER: 'ALIEN_NUMBER',
   OTHER: 'OTHER',
-  NO_ID: 'NO_ID',
-  SOCIAL_SECURITY_NO: 'SOCIAL_SECURITY_NO'
+  NO_ID: 'NO_ID'
 }
 
 export const identityOptions: ISelectOption[] = [
@@ -66,6 +66,10 @@ export const identityOptions: ISelectOption[] = [
   {
     value: identityNumberMapping.NATIONAL_ID,
     label: formMessageDescriptors.iDTypeNationalID
+  },
+  {
+    value: identityNumberMapping.SOCIAL_SECURITY_CARD,
+    label: formMessageDescriptors.iDTypeSSC
   },
   {
     value: identityNumberMapping.DRIVING_LICENSE,

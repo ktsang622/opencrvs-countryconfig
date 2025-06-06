@@ -1,7 +1,7 @@
 import { countryLogo } from '@countryconfig/api/application/country-logo'
 
 export const applicationConfig = {
-  APPLICATION_NAME: 'Farajaland CRS',
+  APPLICATION_NAME: 'TOPPAN Security CRVS',
   BIRTH: {
     REGISTRATION_TARGET: 30,
     LATE_REGISTRATION_TARGET: 365,
@@ -42,9 +42,9 @@ export const applicationConfig = {
   DECLARATION_AUDIT_LOCATIONS: 'DISTRICT',
   FEATURES: {
     DEATH_REGISTRATION: true,
-    MARRIAGE_REGISTRATION: false,
-    EXTERNAL_VALIDATION_WORKQUEUE: false,
-    PRINT_DECLARATION: false,
+    MARRIAGE_REGISTRATION: true,
+    EXTERNAL_VALIDATION_WORKQUEUE: true,
+    PRINT_DECLARATION: true,
     DATE_OF_BIRTH_UNKNOWN: true
   },
   USER_NOTIFICATION_DELIVERY_METHOD: 'email', // or 'sms', or '' ... You can use 'sms' for WhatsApp
