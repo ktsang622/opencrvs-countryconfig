@@ -1,0 +1,184 @@
+diff --git a/src/form/birth/index.ts b/src/form/birth/index.ts
+index 6aa9e2e..e24abc6 100644
+--- a/src/form/birth/index.ts
++++ b/src/form/birth/index.ts
+@@ -79,7 +79,7 @@ import { certificateHandlebars } from './certificate-handlebars'
+ import { getSectionMapping } from '@countryconfig/utils/mapping/section/birth/mapping-utils'
+ import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
+ import { getReasonForLateRegistration } from '../custom-fields'
+-import { getIDNumberFields, getIDType } from '../custom-fields'
++import { getIDNumberFields, getIDType, createPersonPicker } from '../custom-fields'
+ // import { createCustomFieldExample } from '../custom-fields'
+ 
+ // ======================= FORM CONFIGURATION =======================
+@@ -312,6 +312,7 @@ export const birthForm: ISerializedForm = {
+               formMessageDescriptors.mothersDetailsExist,
+               mothersDetailsExistConditionals
+             ), // Strongly recommend is required if you want to register abandoned / orphaned children!
++            createPersonPicker('mother', mothersDetailsExistConditionals),
+             divider(
+               'mother-details-seperator',
+               mothersDetailsExistConditionals
+diff --git a/src/form/common/custom-validation-conditionals/custom-validators.ts b/src/form/common/custom-validation-conditionals/custom-validators.ts
+index 122127c..dd0197f 100644
+--- a/src/form/common/custom-validation-conditionals/custom-validators.ts
++++ b/src/form/common/custom-validation-conditionals/custom-validators.ts
+@@ -24,3 +24,23 @@ export function isNumberLessThan21(value: IFormFieldValue) {
+ 
+   return {}
+ }
++
++export function fetchPersonData() {
++  return fetch('/person-lookup', {
++    method: 'POST',
++    headers: { 'Content-Type': 'application/json' },
++    body: JSON.stringify(arguments[0])
++  }).then(res => res.json())
++}
++
++export function transformPersonData(response) {
++  if (response && response.motherFirstNames) {
++    return {
++      motherFirstNames: response.motherFirstNames,
++      motherFamilyName: response.motherFamilyName,
++      motherBirthDate: response.motherBirthDate,
++      motherNationality: response.motherNationality
++    }
++  }
++  throw new Error('Person not found')
++}
+diff --git a/src/form/custom-fields.ts b/src/form/custom-fields.ts
+index d43fd8a..3036a93 100644
+--- a/src/form/custom-fields.ts
++++ b/src/form/custom-fields.ts
+@@ -230,3 +230,80 @@ export function getIDNumberFields(
+     .filter((opt) => opt.value !== 'NONE')
+     .map((opt) => getIDNumber(section, opt.value, conditionals, required))
+ }
++
++export function createPersonPicker(
++  sectionId: string,
++  conditionals: Conditional[] = []
++): SerializedFormField {
++  const fieldName = `${sectionId}PersonPicker`
++  const fieldId = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
++  
++  return {
++    name: fieldName,
++    customQuestionMappingId: fieldId,
++    custom: true,
++    required: false,
++    type: 'FETCH_BUTTON',
++    label: {
++      id: 'form.field.label.personPicker',
++      description: 'Button to lookup person from external system',
++      defaultMessage: 'Lookup Person'
++    },
++    modalTitle: {
++      id: 'form.field.modal.personPicker.title',
++      description: 'Modal title for person picker',
++      defaultMessage: 'Person Lookup'
++    },
++    successTitle: {
++      id: 'form.field.modal.personPicker.success',
++      description: 'Success message for person picker',
++      defaultMessage: 'Person found and details populated'
++    },
++    errorTitle: {
++      id: 'form.field.modal.personPicker.error',
++      description: 'Error message for person picker',
++      defaultMessage: 'Person not found or lookup failed'
++    },
++    initialValue: '',
++    validator: [],
++    mapping: getCustomFieldMapping(fieldId),
++    conditionals,
++    queryMap: {
++      personLookup: {
++        query: {
++          operation: 'fetchPersonData'
++        },
++        inputs: [
++          {
++            name: 'searchTerm',
++            valueField: 'searchTerm',
++            type: 'TEXT'
++          }
++        ],
++        modalInfoText: {
++          id: 'form.field.modal.personPicker.info',
++          description: 'Info text for person picker modal',
++          defaultMessage: 'Enter ID number or name to search for person'
++        },
++        errorText: {
++          id: 'form.field.modal.personPicker.queryError',
++          description: 'Query error for person picker',
++          defaultMessage: 'Failed to search for person'
++        },
++        networkErrorText: {
++          id: 'form.field.modal.personPicker.networkError',
++          description: 'Network error for person picker',
++          defaultMessage: 'Network error occurred during search'
++        },
++        responseTransformer: {
++          operation: 'transformPersonData'
++        }
++      }
++    },
++    querySelectorInput: {
++      name: 'searchTerm',
++      valueField: 'searchTerm',
++      type: 'TEXT'
++    }
++  }
++}
+diff --git a/src/index.ts b/src/index.ts
+index 795ffaf..24d419f 100644
+--- a/src/index.ts
++++ b/src/index.ts
+@@ -70,6 +70,7 @@ import { readFileSync } from 'fs'
+ import { ActionType } from '@opencrvs/toolkit/events'
+ import { Event } from './form/types/types'
+ import { onRegisterHandler } from './api/registration'
++import { personLookupHandler, personLookupSchema } from './api/person-lookup/handler'
+ 
+ export interface ITokenPayload {
+   sub: string
+@@ -602,6 +603,19 @@ export async function createServer() {
+     }
+   })
+ 
++  server.route({
++    method: 'POST',
++    path: '/person-lookup',
++    handler: personLookupHandler,
++    options: {
++      tags: ['api', 'person-lookup'],
++      validate: {
++        payload: personLookupSchema
++      },
++      description: 'Lookup person from external system'
++    }
++  })
++
+   server.ext({
+     type: 'onRequest',
+     method(request: Hapi.Request & { sentryScope?: any }, h) {
+diff --git a/src/translations/client.csv b/src/translations/client.csv
+index fe99c8d..fe1fc68 100644
+--- a/src/translations/client.csv
++++ b/src/translations/client.csv
+@@ -827,6 +827,13 @@ foo.bar,bar,Foo,Foo
+ form.customField.label.numberOfDependants,,No. of dependants,Nombre de personnes à charge
+ form.customField.label.reasonForLateRegistrationBirth,,Reason for delayed registration,Raison du retard d'inscription
+ form.customField.label.reasonForLateRegistrationDeath,,Reason for late registration,Raison de l'inscription tardive
++form.field.label.personPicker,,Lookup Person,Rechercher une personne
++form.field.modal.personPicker.title,,Person Lookup,Recherche de personne
++form.field.modal.personPicker.success,,Person found and details populated,Personne trouvée et détails remplis
++form.field.modal.personPicker.error,,Person not found or lookup failed,Personne non trouvée ou échec de la recherche
++form.field.modal.personPicker.info,,Enter ID number or name to search for person,Entrez le numéro d'identification ou le nom pour rechercher une personne
++form.field.modal.personPicker.queryError,,Failed to search for person,Échec de la recherche de personne
++form.field.modal.personPicker.networkError,,Network error occurred during search,Erreur réseau lors de la recherche
+ form.field.SearchField.changeButtonLabel,,"{fieldName, select, registrationOffice {Change assigned office} other {Change health institute}}","{fieldName, select, registrationOffice {Bureau d'enregistrement assigné} autre {Instituts de santé}}"
+ form.field.SearchField.modalTitle,,"{fieldName, select, registrationOffice {Assigned registration office} other {Health institutions}}","{fieldName, select, registrationOffice {Bureau d'enregistrement assigné} autre {Instituts de santé}}"
+ form.field.SearchField.officeLocationId,,Id: {locationId},Id : {locationId}

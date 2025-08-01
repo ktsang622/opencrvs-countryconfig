@@ -70,6 +70,10 @@ import { readFileSync } from 'fs'
 import { ActionType } from '@opencrvs/toolkit/events'
 import { Event } from './form/types/types'
 import { onRegisterHandler } from './api/registration'
+import {
+  personLookupHandler,
+  personLookupSchema
+} from './api/person-lookup/handler'
 
 export interface ITokenPayload {
   sub: string
@@ -599,6 +603,19 @@ export async function createServer() {
     options: {
       tags: ['api', 'events'],
       description: 'Receives notifications on event actions'
+    }
+  })
+
+  server.route({
+    method: 'POST',
+    path: '/person-lookup',
+    handler: personLookupHandler,
+    options: {
+      tags: ['api', 'person-lookup'],
+      validate: {
+        payload: personLookupSchema
+      },
+      description: 'Lookup person from external system'
     }
   })
 

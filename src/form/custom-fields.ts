@@ -230,3 +230,80 @@ export function getIDNumberFields(
     .filter((opt) => opt.value !== 'NONE')
     .map((opt) => getIDNumber(section, opt.value, conditionals, required))
 }
+
+export function createPersonPicker(
+  sectionId: string,
+  conditionals: Conditional[] = []
+): SerializedFormField {
+  const fieldName = `${sectionId}PersonPicker`
+  const fieldId = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  return {
+    name: fieldName,
+    customQuestionMappingId: fieldId,
+    custom: true,
+    required: false,
+    type: 'FETCH_BUTTON',
+    label: {
+      id: 'form.field.label.personPicker',
+      description: 'Button to lookup person from external system',
+      defaultMessage: 'Lookup Person'
+    },
+    modalTitle: {
+      id: 'form.field.modal.personPicker.title',
+      description: 'Modal title for person picker',
+      defaultMessage: 'Person Lookup'
+    },
+    successTitle: {
+      id: 'form.field.modal.personPicker.success',
+      description: 'Success message for person picker',
+      defaultMessage: 'Person found and details populated'
+    },
+    errorTitle: {
+      id: 'form.field.modal.personPicker.error',
+      description: 'Error message for person picker',
+      defaultMessage: 'Person not found or lookup failed'
+    },
+    initialValue: '',
+    validator: [],
+    mapping: getCustomFieldMapping(fieldId),
+    conditionals,
+    queryMap: {
+      personLookup: {
+        query: {
+          operation: 'fetchPersonData'
+        },
+        inputs: [
+          {
+            name: 'searchTerm',
+            valueField: 'searchTerm',
+            type: 'TEXT'
+          }
+        ],
+        modalInfoText: {
+          id: 'form.field.modal.personPicker.info',
+          description: 'Info text for person picker modal',
+          defaultMessage: 'Enter ID number or name to search for person'
+        },
+        errorText: {
+          id: 'form.field.modal.personPicker.queryError',
+          description: 'Query error for person picker',
+          defaultMessage: 'Failed to search for person'
+        },
+        networkErrorText: {
+          id: 'form.field.modal.personPicker.networkError',
+          description: 'Network error for person picker',
+          defaultMessage: 'Network error occurred during search'
+        },
+        responseTransformer: {
+          operation: 'transformPersonData'
+        }
+      }
+    },
+    querySelectorInput: {
+      name: 'searchTerm',
+      valueField: 'searchTerm',
+      type: 'TEXT'
+    }
+  }
+}

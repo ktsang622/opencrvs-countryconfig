@@ -1120,6 +1120,7 @@ form.field.label.otherInformantType,,Other relation,Autre lien de parenté
 form.field.label.otherInstitution,,Other,Autre
 form.field.label.otherOption,,Other,Autre
 form.field.label.parentDetailsType,,Do you have the mother and father's details?,Avez-vous les coordonnées de la mère et du père ?
+form.field.label.personPicker,,Lookup Person,Rechercher une personne
 form.field.label.phoneNumber,,Phone number,Numéro de téléphone
 form.field.label.physician,,Physician,Médecin
 form.field.label.placeOfBirth,,Location,Lieu
@@ -1215,6 +1216,12 @@ form.field.label.verbalAutopsy,,Verbal autopsy,Autopsie verbale
 form.field.label.verbalAutopsyReport,,Verbal autopsy report,Rapport d'autopsie verbal
 form.field.label.weightAtBirth,,Weight at birth,Poids à la naissance
 form.field.label.whatDocToUpload,,Which document type are you uploading?,Quel type de document téléchargez-vous ?
+form.field.modal.personPicker.error,,Person not found or lookup failed,Personne non trouvée ou échec de la recherche
+form.field.modal.personPicker.info,,Enter ID number or name to search for person,Entrez le numéro d'identification ou le nom pour rechercher une personne
+form.field.modal.personPicker.networkError,,Network error occurred during search,Erreur réseau lors de la recherche
+form.field.modal.personPicker.queryError,,Failed to search for person,Échec de la recherche de personne
+form.field.modal.personPicker.success,,Person found and details populated,Personne trouvée et détails remplis
+form.field.modal.personPicker.title,,Person Lookup,Recherche de personne
 form.field.nidNotVerified,,Authenticate,Authentifier
 form.field.nidNotVerifiedReviewSection,,Unauthenticated,Non authentifié
 form.field.nidOffline,,National ID authentication is currently not available offline.,L'authentification de la carte d'identité nationale n'est actuellement pas disponible hors ligne.

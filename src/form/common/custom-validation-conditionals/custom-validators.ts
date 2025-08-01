@@ -24,3 +24,23 @@ export function isNumberLessThan21(value: IFormFieldValue) {
 
   return {}
 }
+
+export function fetchPersonData() {
+  return fetch('/person-lookup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(args[0])
+  }).then((res) => res.json())
+}
+
+export function transformPersonData(response) {
+  if (response && response.motherFirstNames) {
+    return {
+      motherFirstNames: response.motherFirstNames,
+      motherFamilyName: response.motherFamilyName,
+      motherBirthDate: response.motherBirthDate,
+      motherNationality: response.motherNationality
+    }
+  }
+  throw new Error('Person not found')
+}

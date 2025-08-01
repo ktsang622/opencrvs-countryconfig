@@ -79,7 +79,11 @@ import { certificateHandlebars } from './certificate-handlebars'
 import { getSectionMapping } from '@countryconfig/utils/mapping/section/birth/mapping-utils'
 import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
 import { getReasonForLateRegistration } from '../custom-fields'
-import { getIDNumberFields, getIDType } from '../custom-fields'
+import {
+  getIDNumberFields,
+  getIDType,
+  createPersonPicker
+} from '../custom-fields'
 // import { createCustomFieldExample } from '../custom-fields'
 
 // ======================= FORM CONFIGURATION =======================
@@ -312,6 +316,7 @@ export const birthForm: ISerializedForm = {
               formMessageDescriptors.mothersDetailsExist,
               mothersDetailsExistConditionals
             ), // Strongly recommend is required if you want to register abandoned / orphaned children!
+            createPersonPicker('mother', mothersDetailsExistConditionals),
             divider(
               'mother-details-seperator',
               mothersDetailsExistConditionals
