@@ -27,7 +27,7 @@ window.config = {
   REGISTRATIONS_DASHBOARD_URL: '',
   // http://localhost:4444/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300
   STATISTICS_DASHBOARD_URL: '',
-  FAMILY_TREE_URL: 'http://localhost:3889/showMap',
+  FAMILY_TREE_URL: 'http://localhost:3888/showMap',
   PERSON_SEARCH_API_URL: 'http://localhost:7070',
   USE_MOCK_PERSON_DATA: false,
   FEATURES: {
