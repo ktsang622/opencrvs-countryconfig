@@ -824,6 +824,12 @@ fieldAgentHome.requireUpdatesCountLoading,,Checking your declarations,Vérificat
 fieldAgentHome.sentForReviewCount,,Sent for review ({total}),Envoyées pour révision ({total})
 fieldAgentHome.zeroUpdatesText,,No declarations require updates,Aucune déclaration ne nécessite de mise à jour
 foo.bar,bar,Foo,Foo
+constants.accessDeniedTitle,Title for access denied page,Access Denied,Accès Refusé
+constants.accessDeniedSubtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
+constants.accessDeniedMessage,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
+access.denied.title,Title for access denied page,Access Denied,Accès Refusé
+access.denied.subtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
+access.denied.message,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
 form.customField.label.numberOfDependants,,No. of dependants,Nombre de personnes à charge
 form.customField.label.reasonForLateRegistrationBirth,,Reason for delayed registration,Raison du retard d'inscription
 form.customField.label.reasonForLateRegistrationDeath,,Reason for late registration,Raison de l'inscription tardive

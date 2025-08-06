@@ -152,6 +152,7 @@ export const LINK_BUTTON = 'LINK_BUTTON'
 export const ID_READER = 'ID_READER'
 export const ID_VERIFICATION_BANNER = 'ID_VERIFICATION_BANNER'
 export const LOADER = 'LOADER'
+export const PERSON_SEARCH_BUTTON = 'PERSON_SEARCH_BUTTON'
 
 export enum RadioSize {
   LARGE = 'large',
@@ -459,6 +460,12 @@ export interface IQueryMap {
   [key: string]: IQuery
 }
 
+export interface IPersonSearchButtonField extends IFormFieldBase {
+  type: typeof PERSON_SEARCH_BUTTON
+  modalTitle: MessageDescriptor
+  onPersonSelect?: (person: any) => void
+}
+
 export interface ILoaderButton extends IFormFieldBase {
   type: typeof FETCH_BUTTON
   queryMap: IQueryMap
@@ -598,6 +605,7 @@ export type IFormField =
   | ILink
   | IDynamicListFormField
   | ILoaderButton
+  | IPersonSearchButtonField
   | ISimpleDocumentUploaderFormField
   | ILocationSearchInputFormField
   | IDateRangePickerFormField

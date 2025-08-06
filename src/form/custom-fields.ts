@@ -14,7 +14,7 @@ import { camelCase } from 'lodash'
 import { MessageDescriptor } from 'react-intl'
 import { getNationalIDValidators } from './common/default-validation-conditionals'
 import { formMessageDescriptors } from './common/messages'
-import { Conditional, SerializedFormField } from './types/types'
+import { Conditional, PERSON_SEARCH_BUTTON, SerializedFormField } from './types/types'
 
 // ======================= CUSTOM FIELD CONFIGURATION =======================
 
@@ -304,6 +304,75 @@ export function createPersonPicker(
       name: 'searchTerm',
       valueField: 'searchTerm',
       type: 'TEXT'
+    }
+  }
+}
+
+export function createSelectedPersonIdField(
+  sectionId: string,
+  conditionals: Conditional[] = []): SerializedFormField {
+  const fieldName: string = 'searchPersonId'
+  const fieldId: string = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  return {
+    name: fieldName,
+    customQuestionMappingId: fieldId,
+    custom: true,
+    required: false,
+    type: 'TEXT',
+    label: {
+      id: 'form.field.searchPersonId.label',
+      description: 'Stores selected person id from external system.',
+      defaultMessage: 'Selected Person Id (Debug)'
+    },
+    initialValue: 'INITIAL_VALUE_TEST',
+    validator: [],
+    mapping: getCustomFieldMapping(fieldId),
+    conditionals,
+    maxLength: 250
+  }
+}
+
+export function createPersonSearchButton(
+  fieldName: string,
+  sectionId: string,
+  conditionals: Conditional[] = []
+): SerializedFormField {
+  const fieldId: string = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  return {
+    name: fieldName,
+    customQuestionMappingId: fieldId,
+    custom: true,
+    required: false,
+    type: PERSON_SEARCH_BUTTON,
+    label: {
+      id: 'form.field.searchPerson.label',
+      description: 'Button to search for a person',
+      defaultMessage: 'Search for Person'
+    },
+    modalTitle: {
+      id: 'form.field.searchPerson.modalTitle',
+      description: 'Modal title for person search',
+      defaultMessage: 'Find Person'
+    },
+    initialValue: '',
+    validator: [],
+    mapping: getCustomFieldMapping(fieldId),
+    conditionals,
+    onPersonSelect: (person: any) => {
+      // Handle person selection logic here
+      console.log('🎯 Field-level onPersonSelect callback triggered for section:', sectionId, person)
+      console.log('🎯 Selected person details:', JSON.stringify(person, null, 2))
+      // Add your custom logic here for handling the selected person
+      // For example, you might want to populate other fields based on the selected person
+
+      // Example: You could dispatch an action or call a callback to populate form fields
+      // based on the selected person's data
+      if (person) {
+        console.log('🎯 Processing selected person for section:', sectionId)
+        // Add your custom logic here
+      }
     }
   }
 }

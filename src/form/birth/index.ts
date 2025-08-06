@@ -78,7 +78,7 @@ import {
 import { certificateHandlebars } from './certificate-handlebars'
 import { getSectionMapping } from '@countryconfig/utils/mapping/section/birth/mapping-utils'
 import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
-import { getReasonForLateRegistration } from '../custom-fields'
+import { createPersonSearchButton, createSelectedPersonIdField, getReasonForLateRegistration } from '../custom-fields'
 import {
   getIDNumberFields,
   getIDType,
@@ -316,12 +316,13 @@ export const birthForm: ISerializedForm = {
               formMessageDescriptors.mothersDetailsExist,
               mothersDetailsExistConditionals
             ), // Strongly recommend is required if you want to register abandoned / orphaned children!
-            createPersonPicker('mother', mothersDetailsExistConditionals),
             divider(
               'mother-details-seperator',
               mothersDetailsExistConditionals
             ),
             getReasonNotExisting(certificateHandlebars.motherReasonNotApplying), // Strongly recommend is required if you want to register abandoned / orphaned children!
+            createPersonSearchButton('motherSearch', 'mother'),
+            createSelectedPersonIdField('mother'),
             getFirstNameField(
               'motherNameInEnglish',
               motherFirstNameConditionals,
