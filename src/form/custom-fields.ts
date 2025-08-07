@@ -343,11 +343,7 @@ export function createSelectedPersonIdField(
     conditionals: [
       {
         action: 'hide',
-        expression: '!values.detailsExist'
-      },
-      {
-        action: 'hide',
-        expression: '!window.config?.DEBUG'
+        expression: '!values.searchPersonId'
       }
     ].concat(conditionals),
     maxLength: 250,
