@@ -14,7 +14,11 @@ import { camelCase } from 'lodash'
 import { MessageDescriptor } from 'react-intl'
 import { getNationalIDValidators } from './common/default-validation-conditionals'
 import { formMessageDescriptors } from './common/messages'
-import { Conditional, PERSON_SEARCH_BUTTON, SerializedFormField } from './types/types'
+import {
+  Conditional,
+  PERSON_SEARCH_BUTTON,
+  SerializedFormField
+} from './types/types'
 
 // ======================= CUSTOM FIELD CONFIGURATION =======================
 
@@ -310,7 +314,8 @@ export function createPersonPicker(
 
 export function createSelectedPersonIdField(
   sectionId: string,
-  conditionals: Conditional[] = []): SerializedFormField {
+  conditionals: Conditional[] = []
+): SerializedFormField {
   const fieldName: string = 'searchPersonId'
   const fieldId: string = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
 
@@ -361,17 +366,12 @@ export function createPersonSearchButton(
     mapping: getCustomFieldMapping(fieldId),
     conditionals,
     onPersonSelect: (person: any) => {
-      // Handle person selection logic here
-      console.log('🎯 Field-level onPersonSelect callback triggered for section:', sectionId, person)
-      console.log('🎯 Selected person details:', JSON.stringify(person, null, 2))
-      // Add your custom logic here for handling the selected person
-      // For example, you might want to populate other fields based on the selected person
+      console.log('🎯 Person selected for section:', sectionId, person)
 
-      // Example: You could dispatch an action or call a callback to populate form fields
-      // based on the selected person's data
-      if (person) {
-        console.log('🎯 Processing selected person for section:', sectionId)
-        // Add your custom logic here
+      if (person && person.uuid) {
+        console.log('✅ Person UUID stored:', person.uuid)
+        // The PersonSearchButton component will handle form field population
+        // This callback is just for logging/tracking purposes
       }
     }
   }
