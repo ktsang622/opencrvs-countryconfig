@@ -22,6 +22,13 @@ import {
 
 // ======================= CUSTOM FIELD CONFIGURATION =======================
 
+// Reusable conditional for registrar-only features
+const registrarOnlyConditional: Conditional = {
+  action: 'hide',
+  expression:
+    '!userDetails || !userDetails.role || (userDetails.role.label.id !== "userRole.localRegistrar" && userDetails.role.label.id !== "userRole.nationalRegistrar")'
+}
+
 // A CUSTOM FIELD CAN BE ADDED TO APPEAR IN ANY SECTION
 // DUPLICATE AND RENAME FUNCTIONS LIKE THESE IN ORDER TO USE SIMILAR FIELDS
 
@@ -422,7 +429,8 @@ export function createExtLookupButton(
       {
         action: 'hide',
         expression: 'values.searchPersonId'
-      }
+      },
+      registrarOnlyConditional
     ].concat(conditionals),
     hideInPreview: true,
     previewGroup: 'linkedPerson',
