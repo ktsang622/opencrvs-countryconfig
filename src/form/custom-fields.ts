@@ -439,7 +439,7 @@ export function createExtLookupButton(
 
       if (person && person.uuid) {
         console.log('✅ Person UUID stored:', person.uuid)
-        // The PersonSearchButton component will handle form field population
+        // The PersonPicker component will handle form field population
         // This callback is just for logging/tracking purposes
       }
     }

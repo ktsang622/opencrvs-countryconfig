@@ -438,23 +438,56 @@ export const birthForm: ISerializedForm = {
               fathersDetailsExistConditionals
             ),
             getReasonNotExisting('fatherReasonNotApplying'), // Strongly recommend is required if you want to register abandoned / orphaned children!
-            getFirstNameField(
-              'fatherNameInEnglish',
-              fatherFirstNameConditionals,
-              certificateHandlebars.fatherFirstName
-            ), // Required field.
-            getFamilyNameField(
-              'fatherNameInEnglish',
-              fatherFamilyNameConditionals,
-              certificateHandlebars.fatherFamilyName
-            ), // Required field.
-            getBirthDate(
-              'fatherBirthDate',
-              fathersBirthDateConditionals,
-              parentsBirthDateValidators,
-              certificateHandlebars.fatherBirthDate
-            ), // Required field.
-            exactDateOfBirthUnknown(detailsExistConditional),
+            createExtLookupButton('fatherSearch', 'father'),
+            createUnlinkButton('fatherUnlink', 'father'),
+            createSelectedPersonIdField('father'),
+            {
+              ...getFirstNameField(
+                'fatherNameInEnglish',
+                fatherFirstNameConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                certificateHandlebars.fatherFirstName
+              )
+            }, // Required field.
+            {
+              ...getFamilyNameField(
+                'fatherNameInEnglish',
+                fatherFamilyNameConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                certificateHandlebars.fatherFamilyName
+              )
+            }, // Required field.
+            {
+              ...getBirthDate(
+                'fatherBirthDate',
+                fathersBirthDateConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                parentsBirthDateValidators,
+                certificateHandlebars.fatherBirthDate
+              )
+            }, // Required field.
+            {
+              ...exactDateOfBirthUnknown(
+                detailsExistConditional.concat([
+                  {
+                    action: 'hide',
+                    expression: 'values.searchPersonId'
+                  }
+                ])
+              )
+            },
             getAgeOfIndividualInYears(
               formMessageDescriptors.ageOfFather,
               exactDateOfBirthUnknownConditional.concat(
