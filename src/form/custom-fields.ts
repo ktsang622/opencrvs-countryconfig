@@ -16,7 +16,7 @@ import { getNationalIDValidators } from './common/default-validation-conditional
 import { formMessageDescriptors } from './common/messages'
 import {
   Conditional,
-  PERSON_SEARCH_BUTTON,
+  EXT_LOOKUP_BUTTON,
   SerializedFormField
 } from './types/types'
 
@@ -247,7 +247,7 @@ export function createPersonPicker(
     customQuestionMappingId: fieldId,
     custom: true,
     required: false,
-    type: 'FETCH_BUTTON',
+    type: 'EXT_LOOKUP_BUTTON',
     label: {
       id: 'form.field.label.personPicker',
       description: 'Button to lookup person from external system',
@@ -326,19 +326,69 @@ export function createSelectedPersonIdField(
     required: false,
     type: 'TEXT',
     label: {
-      id: 'form.field.searchPersonId.label',
-      description: 'Stores selected person id from external system.',
-      defaultMessage: 'Selected Person Id (Debug)'
+      id: 'form.field.linkedPerson.label',
+      description: 'Shows when person is linked from external system',
+      defaultMessage: '🔗 Linked Person'
     },
-    initialValue: 'INITIAL_VALUE_TEST',
+    initialValue: '',
     validator: [],
     mapping: getCustomFieldMapping(fieldId),
-    conditionals,
-    maxLength: 250
+    conditionals: [
+      {
+        action: 'hide',
+        expression: '!values.detailsExist'
+      },
+      {
+        action: 'hide',
+        expression: '!window.config?.DEBUG'
+      }
+    ].concat(conditionals),
+    maxLength: 250,
+    previewGroup: 'linkedPerson',
+    hideValueInPreview: false
   }
 }
 
-export function createPersonSearchButton(
+export function createUnlinkButton(
+  fieldName: string,
+  sectionId: string,
+  conditionals: Conditional[] = []
+): SerializedFormField {
+  return {
+    name: fieldName,
+    custom: true,
+    required: false,
+    type: 'BUTTON',
+    label: {
+      id: 'form.field.unlinkPerson.label',
+      description: 'Button to unlink person and allow manual input',
+      defaultMessage: 'Unlink Person'
+    },
+    buttonLabel: {
+      id: 'form.field.unlinkPerson.label',
+      description: 'Button to unlink person and allow manual input',
+      defaultMessage: 'Unlink Person'
+    },
+    initialValue: '',
+    validator: [],
+    conditionals: [
+      {
+        action: 'hide',
+        expression: '!values.detailsExist'
+      },
+      {
+        action: 'hide',
+        expression: '!values.searchPersonId'
+      }
+    ].concat(conditionals),
+    hideInPreview: true,
+    options: {
+      trigger: 'clearLinkedData'
+    }
+  }
+}
+
+export function createExtLookupButton(
   fieldName: string,
   sectionId: string,
   conditionals: Conditional[] = []
@@ -350,7 +400,7 @@ export function createPersonSearchButton(
     customQuestionMappingId: fieldId,
     custom: true,
     required: false,
-    type: PERSON_SEARCH_BUTTON,
+    type: EXT_LOOKUP_BUTTON,
     label: {
       id: 'form.field.searchPerson.label',
       description: 'Button to search for a person',
@@ -364,7 +414,18 @@ export function createPersonSearchButton(
     initialValue: '',
     validator: [],
     mapping: getCustomFieldMapping(fieldId),
-    conditionals,
+    conditionals: [
+      {
+        action: 'hide',
+        expression: '!values.detailsExist'
+      },
+      {
+        action: 'hide',
+        expression: 'values.searchPersonId'
+      }
+    ].concat(conditionals),
+    hideInPreview: true,
+    previewGroup: 'linkedPerson',
     onPersonSelect: (person: any) => {
       console.log('🎯 Person selected for section:', sectionId, person)
 

@@ -30,6 +30,7 @@ window.config = {
   FAMILY_TREE_URL: 'http://localhost:3888/showMap',
   PERSON_SEARCH_API_URL: 'http://localhost:7070',
   USE_MOCK_PERSON_DATA: false,
+  DEBUG: false,
   FEATURES: {
     // The V2_EVENTS variable is passed down from src/index.ts:309
     V2_EVENTS: {{ V2_EVENTS }}

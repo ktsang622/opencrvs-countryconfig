@@ -78,7 +78,12 @@ import {
 import { certificateHandlebars } from './certificate-handlebars'
 import { getSectionMapping } from '@countryconfig/utils/mapping/section/birth/mapping-utils'
 import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
-import { createPersonSearchButton, createSelectedPersonIdField, getReasonForLateRegistration } from '../custom-fields'
+import {
+  createExtLookupButton,
+  createUnlinkButton,
+  createSelectedPersonIdField,
+  getReasonForLateRegistration
+} from '../custom-fields'
 import {
   getIDNumberFields,
   getIDType,
@@ -321,25 +326,56 @@ export const birthForm: ISerializedForm = {
               mothersDetailsExistConditionals
             ),
             getReasonNotExisting(certificateHandlebars.motherReasonNotApplying), // Strongly recommend is required if you want to register abandoned / orphaned children!
-            createPersonSearchButton('motherSearch', 'mother'),
+            createExtLookupButton('motherSearch', 'mother'),
+            createUnlinkButton('motherUnlink', 'mother'),
             createSelectedPersonIdField('mother'),
-            getFirstNameField(
-              'motherNameInEnglish',
-              motherFirstNameConditionals,
-              certificateHandlebars.motherFirstName
-            ), // Required field.
-            getFamilyNameField(
-              'motherNameInEnglish',
-              motherFamilyNameConditionals,
-              certificateHandlebars.motherFamilyName
-            ), // Required field.
-            getBirthDate(
-              'motherBirthDate',
-              mothersBirthDateConditionals,
-              parentsBirthDateValidators,
-              certificateHandlebars.motherBirthDate
-            ), // Required field.
-            exactDateOfBirthUnknown(detailsExistConditional),
+            {
+              ...getFirstNameField(
+                'motherNameInEnglish',
+                motherFirstNameConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                certificateHandlebars.motherFirstName
+              )
+            }, // Required field.
+            {
+              ...getFamilyNameField(
+                'motherNameInEnglish',
+                motherFamilyNameConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                certificateHandlebars.motherFamilyName
+              )
+            }, // Required field.
+            {
+              ...getBirthDate(
+                'motherBirthDate',
+                mothersBirthDateConditionals.concat([
+                  {
+                    action: 'disable',
+                    expression: 'values.searchPersonId'
+                  }
+                ]),
+                parentsBirthDateValidators,
+                certificateHandlebars.motherBirthDate
+              )
+            }, // Required field.
+            {
+              ...exactDateOfBirthUnknown(
+                detailsExistConditional.concat([
+                  {
+                    action: 'hide',
+                    expression: 'values.searchPersonId'
+                  }
+                ])
+              )
+            },
             getAgeOfIndividualInYears(
               formMessageDescriptors.ageOfMother,
               exactDateOfBirthUnknownConditional.concat(
