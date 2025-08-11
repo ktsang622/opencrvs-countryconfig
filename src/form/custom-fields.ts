@@ -344,6 +344,10 @@ export function createSelectedPersonIdField(
       {
         action: 'hide',
         expression: '!values.searchPersonId'
+      },
+      {
+        action: 'hide',
+        expression: '!values.detailsExist'
       }
     ].concat(conditionals),
     maxLength: 250,
