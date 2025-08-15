@@ -1,5 +1,8 @@
 id,description,en,fr
 ...,This could be shown to the user in a reason for duplicate detected,Standard check,Chèque standard
+access.denied.message,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
+access.denied.subtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
+access.denied.title,Title for access denied page,Access Denied,Accès Refusé
 action.action,Label for action button,Action,Action
 action.archive,Label for archive record button in dropdown menu,Archive declaration,Déclaration d'archive
 action.assignee,Label for asignee,Assigned to {name } at {officeName},Attribué à {name} chez {officeName}
@@ -210,6 +213,9 @@ conflicts.modal.regUnassign.description,Description for modal when registrar wan
 conflicts.modal.selfUnassign.description,Description for modal when user wants to unassign him/herself,Unassigning this record will mean that any current edits will be lost. Please confirm you wish to continue.,La désaffectation de cet enregistrement entraînera la perte de toutes les modifications en cours. Veuillez confirmer que vous souhaitez continuer.
 conflicts.modal.unassign.title,Title for modal when unassign record,Unassign record?,Désaffecter l'enregistrement ?
 constants.PIN,PIN label,PIN,Code Pin
+constants.accessDeniedMessage,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
+constants.accessDeniedSubtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
+constants.accessDeniedTitle,Title for access denied page,Access Denied,Accès Refusé
 constants.address,Label for address,Address,Adresse
 constants.ageVerificationApiUser,The description for AGE_VERIFICATION_API_USER role,Age verification API service,Service API de vérification de l'âge
 constants.allEvents,Label for select option All events,All events,Tous les événements
@@ -824,12 +830,6 @@ fieldAgentHome.requireUpdatesCountLoading,,Checking your declarations,Vérificat
 fieldAgentHome.sentForReviewCount,,Sent for review ({total}),Envoyées pour révision ({total})
 fieldAgentHome.zeroUpdatesText,,No declarations require updates,Aucune déclaration ne nécessite de mise à jour
 foo.bar,bar,Foo,Foo
-constants.accessDeniedTitle,Title for access denied page,Access Denied,Accès Refusé
-constants.accessDeniedSubtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
-constants.accessDeniedMessage,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
-access.denied.title,Title for access denied page,Access Denied,Accès Refusé
-access.denied.subtitle,Subtitle for access denied page,Access Restricted,Accès Restreint
-access.denied.message,Message for access denied page,Only users with registration permissions have access to person search functionality.,Seuls les utilisateurs disposant d'autorisations d'enregistrement ont accès à la fonctionnalité de recherche de personnes.
 form.customField.label.numberOfDependants,,No. of dependants,Nombre de personnes à charge
 form.customField.label.reasonForLateRegistrationBirth,,Reason for delayed registration,Raison du retard d'inscription
 form.customField.label.reasonForLateRegistrationDeath,,Reason for late registration,Raison de l'inscription tardive
@@ -2104,7 +2104,7 @@ review.inputs.brideSignature,Label for informants signature input,Signature of B
 review.inputs.groomSignature,Label for informants signature input,Signature of Groom,Signature du marié
 review.inputs.informantsSignature,Label for informants signature input,Signature of informant,Signature de l'informateur
 review.inputs.supportingDocuments,Section heading title for supporting documents,Supporting documents,Documents justificatifs
-review.inputs.terms,Label for signature terms,"We, the undersigned declare under penalty of perjury under the laws of Farajaland that the forgoing information is true and correct to the best of our knowledge and belief. We further declare that no legal objections to the marriage is known and hereby apply for a certificate of marriage","Nous, les soussignés, déclarons sous peine de parjure en vertu des lois du Farajaland que les informations ci-dessus sont vraies et correctes au mieux de nos connaissances et de nos convictions. Nous déclarons également qu'aucune objection légale au mariage n'est connue et demandons par la présente un certificat de mariage."
+review.inputs.terms,Label for signature terms,"We, the undersigned declare under penalty of perjury under the laws of Toppan that the forgoing information is true and correct to the best of our knowledge and belief. We further declare that no legal objections to the marriage is known and hereby apply for a certificate of marriage","Nous, les soussignés, déclarons sous peine de parjure en vertu des lois du Toppan que les informations ci-dessus sont vraies et correctes au mieux de nos connaissances et de nos convictions. Nous déclarons également qu'aucune objection légale au mariage n'est connue et demandons par la présente un certificat de mariage."
 review.inputs.witnessOneSignature,Label for informants signature input,Signature of Witness 1,Signature du témoin 1
 review.inputs.witnessTwoSignature,Label for informants signature input,Signature of Witness 2,Signature du témoin 2
 review.modal.desc.submitConfirmation,Submit description text on modal,"{completeDeclaration, select, true {This declaration will be sent for review.} other {This incomplete declaration will be sent for review.}}","{completeDeclaration, select, true {Cette déclaration sera envoyée au greffier pour qu'il l'examine.} other {Cette déclaration sera envoyée au greffier pour être complétée. Veuillez informer l'informateur qu'il devra se présenter au bureau avec les informations manquantes et les documents justificatifs.}}"
@@ -2125,7 +2125,7 @@ review.rejection.form.title,Rejection form title,Reason for rejection?,Quelle mi
 review.signature.clear,Label for button that clear signature input,Clear,Supprimer
 review.signature.delete,Label for button that deletes signature,Delete,Supprimer
 review.signature.description,Label awknowledging the correctness of the declaration,"I, the undersigned, hereby declare that the particulars in this form are true and correct to the best of my knowledge.","Je soussigné(e) déclare par la présente que les informations contenues dans ce formulaire sont, à ma connaissance, vraies et correctes."
-review.signature.input.description,Description awknowledging the correctness of the declaration,"By signing this document with an electronic signature, I agree that such signature will be valid as handwritten signatures to the extent allowed by the laws of Farajaland.","En signant ce document avec une signature électronique, j'accepte que cette signature soit valable comme les signatures manuscrites dans la mesure où les lois du Farajaland le permettent."
+review.signature.input.description,Description awknowledging the correctness of the declaration,"By signing this document with an electronic signature, I agree that such signature will be valid as handwritten signatures to the extent allowed by the laws of Farajaland.","En signant ce document avec une signature électronique, j'accepte que cette signature soit valable comme les signatures manuscrites dans la mesure où les lois du Toppan le permettent."
 review.signature.open,Label for button that opens the signature input,Sign,Signer
 reviewAction.description,The description for review action,"By clicking register, you confirm that the information entered is correct and the member can be registered.","En cliquant sur enregistrer, vous confirmez que les informations saisies sont correctes et que le membre peut être enregistré."
 reviewAction.register,The label for register button of review action,Register,Enregistrer
