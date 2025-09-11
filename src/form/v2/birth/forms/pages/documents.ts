@@ -61,7 +61,7 @@ const DEFAULT_FILE_CONFIGURATION = {
     ImageMimeType.enum['image/jpeg'],
     ImageMimeType.enum['image/png'],
     ImageMimeType.enum['image/jpg'],
-    'application/pdf' as const
+    'application/pdf' as any // TODO: Remove when toolkit supports PDF MIME types
   ]
 }
 
