@@ -16,6 +16,7 @@ import {
   field,
   FieldType,
   ImageMimeType,
+  DocumentMimeType,
   not,
   or,
   PageTypes,
@@ -60,7 +61,8 @@ const DEFAULT_FILE_CONFIGURATION = {
   acceptedFileTypes: [
     ImageMimeType.enum['image/jpeg'],
     ImageMimeType.enum['image/png'],
-    ImageMimeType.enum['image/jpg']
+    ImageMimeType.enum['image/jpg'],
+    DocumentMimeType.enum['application/pdf']
   ]
 }
 
