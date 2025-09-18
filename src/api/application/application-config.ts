@@ -46,7 +46,7 @@ export const applicationConfig = {
     EXTERNAL_VALIDATION_WORKQUEUE: false,
     PRINT_DECLARATION: false,
     DATE_OF_BIRTH_UNKNOWN: true,
-    ENHANCED_DOCUMENT_VIEWER: false
+    ENHANCED_DOCUMENT_VIEWER: true
   },
   USER_NOTIFICATION_DELIVERY_METHOD: 'email', // or 'sms', or '' ... You can use 'sms' for WhatsApp
   INFORMANT_NOTIFICATION_DELIVERY_METHOD: 'email', // or 'sms', or '' ... You can use 'sms' for WhatsApp

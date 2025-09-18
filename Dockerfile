@@ -9,7 +9,10 @@ COPY package.json package.json
 COPY tsconfig.json tsconfig.json
 COPY yarn.lock yarn.lock
 COPY src src
-RUN yarn install --production
+
+# Install all dependencies (including dev) for development/production flexibility
+# pino-pretty is needed when NODE_ENV !== 'production'
+RUN yarn install --frozen-lockfile
 
 EXPOSE 3040
 

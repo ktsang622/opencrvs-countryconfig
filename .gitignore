@@ -23,3 +23,5 @@ data
 .secrets
 .env*
 notebooks
+
+debug*
