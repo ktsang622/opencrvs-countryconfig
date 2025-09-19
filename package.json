@@ -28,7 +28,8 @@
     "snapshot": "bash infrastructure/backups/backup.sh",
     "port-forward": "bash infrastructure/port-forward.sh",
     "environment:init": "ts-node infrastructure/environments/setup-environment.ts",
-    "sort-translations": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register src/sort-translations.ts"
+    "sort-translations": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register src/sort-translations.ts",
+    "generate:atg-seeding": "ts-node scripts/generate-atg-seeding.ts"
   },
   "devDependencies": {
     "@inquirer/editor": "^1.2.13",
@@ -107,6 +108,7 @@
     "tsconfig-paths": "^3.8.0",
     "typescript": "^5.1.6",
     "uuid": "^11.1.0",
+    "xlsx": "^0.18.5",
     "zod": "^3.24.1"
   },
   "lint-staged": {

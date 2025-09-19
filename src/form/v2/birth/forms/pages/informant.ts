@@ -266,7 +266,7 @@ export const informant = defineFormPage({
           conditional: informantOtherThanParent
         }
       ],
-      defaultValue: 'FAR'
+      defaultValue: 'ATG'
     },
     {
       id: `${PersonType.informant}.idType`,
@@ -401,7 +401,7 @@ export const informant = defineFormPage({
         }
       ],
       defaultValue: {
-        country: 'FAR',
+        country: 'ATG',
         addressType: AddressType.DOMESTIC,
         province: '$user.province',
         district: '$user.district',

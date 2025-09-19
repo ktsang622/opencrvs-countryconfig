@@ -53,7 +53,7 @@ async function lookupPersonFromExternalSystem(searchTerm: string) {
       motherFirstNames: 'Jane',
       motherFamilyName: 'Doe',
       motherBirthDate: '1990-05-15',
-      motherNationality: 'FAR',
+      motherNationality: 'ATG',
       motherNationalId: '123456789',
       motherMaritalStatus: 'MARRIED',
       motherEducationalAttainment: 'SECONDARY_ISCED_2',
