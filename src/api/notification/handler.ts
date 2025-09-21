@@ -91,7 +91,9 @@ export async function notificationHandler(
     if ('sms' in recipient) {
       recipient.sms = maskSms(recipient.sms)
     } else {
-      recipient.email = maskEmail(recipient.email)
+      recipient.email = recipient.email
+        ? maskEmail(recipient.email)
+        : recipient.email
       recipient.bcc = Array.isArray(recipient.bcc)
         ? recipient.bcc.map(maskEmail)
         : undefined
