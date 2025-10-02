@@ -134,6 +134,10 @@ export const spouseDetailsExistConditionals = [
     expression: 'draftData?.informant?.informantType==="SPOUSE"'
   },
   {
+    action: 'hide',
+    expression: 'values.searchPersonId' // Hide when person is linked
+  },
+  {
     action: 'hideInPreview',
     expression: 'values.detailsExist'
   }
