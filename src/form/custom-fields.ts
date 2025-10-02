@@ -360,7 +360,8 @@ export function createSelectedPersonIdField(
     conditionals: baseConditionals.concat(conditionals),
     maxLength: 250,
     previewGroup: 'linkedPerson',
-    hideValueInPreview: false
+    hideValueInPreview: false,
+    disabled: true // Make field read-only - should not be editable by user
   }
 }
 
