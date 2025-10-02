@@ -63,7 +63,13 @@ import {
 } from '../common/preview-groups'
 import { certificateHandlebars } from './certificate-handlebars'
 import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
-import { getIDNumberFields, getIDType } from '../custom-fields'
+import {
+  getIDNumberFields,
+  getIDType,
+  createExtLookupButton,
+  createUnlinkButton,
+  createSelectedPersonIdField
+} from '../custom-fields'
 
 // import { createCustomFieldExample } from '../custom-fields'
 
@@ -175,36 +181,89 @@ export const marriageForm: ISerializedForm = {
         {
           id: 'groom-view-group',
           fields: [
-            getFirstNameField(
-              'groomNameInEnglish',
+            createExtLookupButton(
+              'groomSearch',
+              'groom',
               [],
-              certificateHandlebars.groomFirstName
-            ), // Required field
-            getFamilyNameField(
-              'groomNameInEnglish',
-              [],
-              certificateHandlebars.groomFamilyName
-            ), // Required field
+              'marriage',
+              false
+            ),
+            createUnlinkButton('groomUnlink', 'groom', [], false),
+            createSelectedPersonIdField('groom', [], 'marriage', false),
+            {
+              ...getFirstNameField(
+                'groomNameInEnglish',
+                [],
+                certificateHandlebars.groomFirstName
+              ), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
+            {
+              ...getFamilyNameField(
+                'groomNameInEnglish',
+                [],
+                certificateHandlebars.groomFamilyName
+              ), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             // ADDRESS FIELDS WILL RENDER HERE
-            getBirthDate(
-              'groomBirthDate',
-              [
+            {
+              ...getBirthDate(
+                'groomBirthDate',
+                [
+                  {
+                    action: 'hide',
+                    expression: 'values.exactDateOfBirthUnknown'
+                  }
+                ],
+                brideOrGroomBirthDateValidators('groom'),
+                certificateHandlebars.groomBirthDate
+              ), // Required field
+              conditionals: [
                 {
                   action: 'hide',
                   expression: 'values.exactDateOfBirthUnknown'
+                },
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
                 }
-              ],
-              brideOrGroomBirthDateValidators('groom'),
-              certificateHandlebars.groomBirthDate
-            ), // Required field
-            exactDateOfBirthUnknown([]),
+              ]
+            },
+            {
+              ...exactDateOfBirthUnknown([]),
+              conditionals: [
+                {
+                  action: 'hide',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             getAgeOfIndividualInYears(
               formMessageDescriptors.ageOfGroom,
               exactDateOfBirthUnknownConditional,
               brideOrGroomAgeValidators,
               certificateHandlebars.ageOfGroomInYears
             ),
-            getNationality(certificateHandlebars.groomNationality, []), // Required field
+            {
+              ...getNationality(certificateHandlebars.groomNationality, []), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             getIDType('marriage', 'groom', [], true),
             ...getIDNumberFields('groom', [], true),
             getMarriedLastName(certificateHandlebars.groomMarriedLastNameEng)
@@ -222,36 +281,89 @@ export const marriageForm: ISerializedForm = {
         {
           id: 'bride-view-group',
           fields: [
-            getFirstNameField(
-              'brideNameInEnglish',
+            createExtLookupButton(
+              'brideSearch',
+              'bride',
               [],
-              certificateHandlebars.brideFirstName
-            ), // Required field
-            getFamilyNameField(
-              'brideNameInEnglish',
-              [],
-              certificateHandlebars.brideFamilyName
-            ), // Required field
+              'marriage',
+              false
+            ),
+            createUnlinkButton('brideUnlink', 'bride', [], false),
+            createSelectedPersonIdField('bride', [], 'marriage', false),
+            {
+              ...getFirstNameField(
+                'brideNameInEnglish',
+                [],
+                certificateHandlebars.brideFirstName
+              ), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
+            {
+              ...getFamilyNameField(
+                'brideNameInEnglish',
+                [],
+                certificateHandlebars.brideFamilyName
+              ), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             // ADDRESS FIELDS WILL RENDER HERE
-            getBirthDate(
-              'brideBirthDate',
-              [
+            {
+              ...getBirthDate(
+                'brideBirthDate',
+                [
+                  {
+                    action: 'hide',
+                    expression: 'values.exactDateOfBirthUnknown'
+                  }
+                ],
+                brideOrGroomBirthDateValidators('bride'),
+                certificateHandlebars.brideBirthDate
+              ), // Required field
+              conditionals: [
                 {
                   action: 'hide',
                   expression: 'values.exactDateOfBirthUnknown'
+                },
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
                 }
-              ],
-              brideOrGroomBirthDateValidators('bride'),
-              certificateHandlebars.brideBirthDate
-            ), // Required field
-            exactDateOfBirthUnknown([]),
+              ]
+            },
+            {
+              ...exactDateOfBirthUnknown([]),
+              conditionals: [
+                {
+                  action: 'hide',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             getAgeOfIndividualInYears(
               formMessageDescriptors.ageOfBride,
               exactDateOfBirthUnknownConditional,
               brideOrGroomAgeValidators,
               certificateHandlebars.ageOfBrideInYears
             ),
-            getNationality(certificateHandlebars.brideNationality, []), // Required field
+            {
+              ...getNationality(certificateHandlebars.brideNationality, []), // Required field
+              conditionals: [
+                {
+                  action: 'disable',
+                  expression: 'values.searchPersonId'
+                }
+              ]
+            },
             getIDType('marriage', 'bride', [], true),
             ...getIDNumberFields('bride', [], true),
             getMarriedLastName(certificateHandlebars.brideMarriedLastNameEng)
