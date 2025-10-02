@@ -344,8 +344,8 @@ export function createSelectedPersonIdField(
   }
 
   // Add a disable conditional to make the field read-only (always disabled)
-  const disableConditional = {
-    action: 'disable' as const,
+  const disableConditional: Conditional = {
+    action: 'disable',
     expression: 'true' // Always disabled - user should not edit UUID
   }
 
