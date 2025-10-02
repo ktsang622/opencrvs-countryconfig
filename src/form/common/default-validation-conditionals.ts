@@ -123,6 +123,10 @@ export const mothersDetailsExistConditionals = [
     expression: 'draftData?.informant?.informantType==="MOTHER"'
   },
   {
+    action: 'hide',
+    expression: 'values.searchPersonId' // Hide when person is linked
+  },
+  {
     action: 'hideInPreview',
     expression: 'values.detailsExist'
   }
@@ -147,6 +151,10 @@ export const fathersDetailsExistConditionals = [
   {
     action: 'hide',
     expression: 'draftData?.informant?.informantType==="FATHER"'
+  },
+  {
+    action: 'hide',
+    expression: 'values.searchPersonId' // Hide when person is linked
   },
   {
     action: 'hideInPreview',
