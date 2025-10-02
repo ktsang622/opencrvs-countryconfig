@@ -343,6 +343,12 @@ export function createSelectedPersonIdField(
     })
   }
 
+  // Add a disable conditional to make the field read-only (always disabled)
+  const disableConditional = {
+    action: 'disable' as const,
+    expression: 'true' // Always disabled - user should not edit UUID
+  }
+
   return {
     name: fieldName,
     customQuestionMappingId: fieldId,
@@ -357,11 +363,12 @@ export function createSelectedPersonIdField(
     initialValue: '',
     validator: [],
     mapping: getCustomFieldMapping(fieldId),
-    conditionals: baseConditionals.concat(conditionals),
+    conditionals: [disableConditional]
+      .concat(baseConditionals)
+      .concat(conditionals),
     maxLength: 250,
     previewGroup: 'linkedPerson',
-    hideValueInPreview: false,
-    disabled: true // Make field read-only - should not be editable by user
+    hideValueInPreview: false
   }
 }
 
