@@ -321,10 +321,27 @@ export function createPersonPicker(
 
 export function createSelectedPersonIdField(
   sectionId: string,
-  conditionals: Conditional[] = []
+  conditionals: Conditional[] = [],
+  event: string = 'birth',
+  requireDetailsExist: boolean = true
 ): SerializedFormField {
   const fieldName: string = 'searchPersonId'
-  const fieldId: string = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
+  const fieldId: string = `${event}.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  const baseConditionals = [
+    {
+      action: 'hide',
+      expression: '!values.searchPersonId'
+    }
+  ]
+
+  // Only add detailsExist check if required
+  if (requireDetailsExist) {
+    baseConditionals.push({
+      action: 'hide',
+      expression: '!values.detailsExist'
+    })
+  }
 
   return {
     name: fieldName,
@@ -340,16 +357,7 @@ export function createSelectedPersonIdField(
     initialValue: '',
     validator: [],
     mapping: getCustomFieldMapping(fieldId),
-    conditionals: [
-      {
-        action: 'hide',
-        expression: '!values.searchPersonId'
-      },
-      {
-        action: 'hide',
-        expression: '!values.detailsExist'
-      }
-    ].concat(conditionals),
+    conditionals: baseConditionals.concat(conditionals),
     maxLength: 250,
     previewGroup: 'linkedPerson',
     hideValueInPreview: false
@@ -359,8 +367,24 @@ export function createSelectedPersonIdField(
 export function createUnlinkButton(
   fieldName: string,
   sectionId: string,
-  conditionals: Conditional[] = []
+  conditionals: Conditional[] = [],
+  requireDetailsExist: boolean = true
 ): SerializedFormField {
+  const baseConditionals = [
+    {
+      action: 'hide',
+      expression: '!values.searchPersonId'
+    }
+  ]
+
+  // Only add detailsExist check if required
+  if (requireDetailsExist) {
+    baseConditionals.unshift({
+      action: 'hide',
+      expression: '!values.detailsExist'
+    })
+  }
+
   return {
     name: fieldName,
     custom: true,
@@ -378,16 +402,7 @@ export function createUnlinkButton(
     },
     initialValue: '',
     validator: [],
-    conditionals: [
-      {
-        action: 'hide',
-        expression: '!values.detailsExist'
-      },
-      {
-        action: 'hide',
-        expression: '!values.searchPersonId'
-      }
-    ].concat(conditionals),
+    conditionals: baseConditionals.concat(conditionals),
     hideInPreview: true,
     options: {
       trigger: 'clearLinkedData'
@@ -398,9 +413,27 @@ export function createUnlinkButton(
 export function createExtLookupButton(
   fieldName: string,
   sectionId: string,
-  conditionals: Conditional[] = []
+  conditionals: Conditional[] = [],
+  event: string = 'birth',
+  requireDetailsExist: boolean = true
 ): SerializedFormField {
-  const fieldId: string = `birth.${sectionId}.${sectionId}-view-group.${fieldName}`
+  const fieldId: string = `${event}.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  const baseConditionals = [
+    {
+      action: 'hide',
+      expression: 'values.searchPersonId'
+    },
+    registrarOnlyConditional
+  ]
+
+  // Only add detailsExist check if required (e.g., for mother/father/spouse but not for deceased/child)
+  if (requireDetailsExist) {
+    baseConditionals.unshift({
+      action: 'hide',
+      expression: '!values.detailsExist'
+    })
+  }
 
   return {
     name: fieldName,
@@ -421,17 +454,7 @@ export function createExtLookupButton(
     initialValue: '',
     validator: [],
     mapping: getCustomFieldMapping(fieldId),
-    conditionals: [
-      {
-        action: 'hide',
-        expression: '!values.detailsExist'
-      },
-      {
-        action: 'hide',
-        expression: 'values.searchPersonId'
-      },
-      registrarOnlyConditional
-    ].concat(conditionals),
+    conditionals: baseConditionals.concat(conditionals),
     hideInPreview: true,
     previewGroup: 'linkedPerson',
     onPersonSelect: (person: any) => {
