@@ -42,7 +42,7 @@ export const applicationConfig = {
   DECLARATION_AUDIT_LOCATIONS: 'DISTRICT',
   FEATURES: {
     DEATH_REGISTRATION: true,
-    MARRIAGE_REGISTRATION: false,
+    MARRIAGE_REGISTRATION: true,
     EXTERNAL_VALIDATION_WORKQUEUE: false,
     PRINT_DECLARATION: false,
     DATE_OF_BIRTH_UNKNOWN: true,
@@ -88,6 +88,13 @@ export const notificationForRecord: NotificationFlags = {
     'sent-for-updates': true
   },
   DEATH: {
+    'sent-notification': true,
+    'sent-notification-for-review': true,
+    'sent-for-approval': true,
+    registered: true,
+    'sent-for-updates': true
+  },
+  MARRIAGE: {
     'sent-notification': true,
     'sent-notification-for-review': true,
     'sent-for-approval': true,
