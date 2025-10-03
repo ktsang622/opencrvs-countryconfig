@@ -27,7 +27,7 @@ window.config = {
   REGISTRATIONS_DASHBOARD_URL: '',
   // http://localhost:4444/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300
   STATISTICS_DASHBOARD_URL: '',
-  FAMILY_TREE_URL: 'http://localhost:3889/familyTree',
+  FAMILY_TREE_URL: 'http://localhost:7070/familyTree',
   TOPPAN_SERVICE_URL: 'http://localhost:7070',
   DEBUG: true,
   FEATURES: {
