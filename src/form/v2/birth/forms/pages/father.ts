@@ -116,6 +116,24 @@ export const father = defineFormPage({
       validation: [invalidNameValidator(`${PersonType.father}.firstname`)]
     },
     {
+      id: `${PersonType.father}.middlename`,
+      configuration: { maxLength: MAX_NAME_LENGTH },
+      type: FieldType.TEXT,
+      required: false,
+      label: {
+        defaultMessage: 'Middle name',
+        description: 'This is the label for the field',
+        id: `v2.event.birth.action.declare.form.section.person.field.middlename.label`
+      },
+      conditionals: [
+        {
+          type: ConditionalType.SHOW,
+          conditional: requireFatherDetails
+        }
+      ],
+      validation: [invalidNameValidator(`${PersonType.father}.middlename`)]
+    },
+    {
       id: `${PersonType.father}.surname`,
       configuration: { maxLength: MAX_NAME_LENGTH },
       type: FieldType.TEXT,

@@ -113,6 +113,24 @@ export const mother = defineFormPage({
       validation: [invalidNameValidator(`${PersonType.mother}.firstname`)]
     },
     {
+      id: `${PersonType.mother}.middlename`,
+      configuration: { maxLength: MAX_NAME_LENGTH },
+      type: FieldType.TEXT,
+      required: false,
+      label: {
+        defaultMessage: 'Middle name',
+        description: 'This is the label for the field',
+        id: `v2.event.birth.action.declare.form.section.person.field.middlename.label`
+      },
+      conditionals: [
+        {
+          type: ConditionalType.SHOW,
+          conditional: requireMotherDetails
+        }
+      ],
+      validation: [invalidNameValidator(`${PersonType.mother}.middlename`)]
+    },
+    {
       id: `${PersonType.mother}.surname`,
       configuration: { maxLength: MAX_NAME_LENGTH },
       type: FieldType.TEXT,
@@ -129,6 +147,24 @@ export const mother = defineFormPage({
         }
       ],
       validation: [invalidNameValidator(`${PersonType.mother}.surname`)]
+    },
+    {
+      id: `${PersonType.mother}.maidenname`,
+      configuration: { maxLength: MAX_NAME_LENGTH },
+      type: FieldType.TEXT,
+      required: false,
+      label: {
+        defaultMessage: 'Maiden name',
+        description: 'This is the label for the field',
+        id: `v2.event.birth.action.declare.form.section.mother.field.maidenname.label`
+      },
+      conditionals: [
+        {
+          type: ConditionalType.SHOW,
+          conditional: requireMotherDetails
+        }
+      ],
+      validation: [invalidNameValidator(`${PersonType.mother}.maidenname`)]
     },
     {
       id: `${PersonType.mother}.dob`,
