@@ -285,6 +285,9 @@ export async function createServer() {
     }
   })
 
+  // NOTE: Certificate generation is now handled by Gateway → certificate-service directly
+  // The countryconfig only provides configuration and templates
+
   // Certificate configuration endpoint (used by gateway)
   server.route({
     method: 'GET',
