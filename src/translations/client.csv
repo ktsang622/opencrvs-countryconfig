@@ -2381,7 +2381,7 @@ v2.constants.certified,A label for certified,certified,certifié
 v2.constants.collected,The status label for collected,collected,collecté
 v2.constants.collectedBy,The collected by sec text,Collected by,Collecté par
 v2.constants.comment,Label for rejection comment,Comment,Commentaire
-v2.constants.countryName,Name of the OpenCRVS implementation country,Antigua and Barbuda,Antigua and Barbuda
+v2.constants.countryName,Name of the Toppan Security implementation country,Antigua and Barbuda,Antigua and Barbuda
 v2.constants.customTimePeriod,Label for Custom time period,Custom time period,Période personnalisée
 v2.constants.dateOfDeclaration,Date of declaration label,Date of declaration,Date de déclaration
 v2.constants.death,A label from the death event,Death,Décès

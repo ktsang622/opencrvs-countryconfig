@@ -30,5 +30,9 @@ window.config = {
     `${scheme}//metabase.${hostname}/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821#bordered=false&titled=false&refresh=300`,
   STATISTICS_DASHBOARD_URL:
     `${scheme}//metabase.${hostname}/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300`,
-  FEATURES: {}
+  FAMILY_TREE_URL: `${scheme}//toppan-ui.${hostname}/familyTree`,
+  TOPPAN_SERVICE_URL: `${scheme}//gateway.${hostname}`,
+  FEATURES: {
+    USE_CERTIFICATE_SERVICE: false  // Set to true in production to enable server-side PDF generation
+  }
 }

@@ -51,6 +51,8 @@ import { mapGeojsonHandler } from '@countryconfig/api/dashboards/handler'
 import { formHandler } from '@countryconfig/form'
 import { locationsHandler } from './data-seeding/locations/handler'
 import { certificateHandler } from './api/certificates/handler'
+import { toppanTemplateHandler } from './api/certificates/toppan-handler'
+import { certificateConfigHandler } from './api/certificates/config'
 import { rolesHandler } from './data-seeding/roles/handler'
 import { usersHandler } from './data-seeding/employees/handler'
 import { applicationConfigHandler } from './api/application/handler'
@@ -268,6 +270,30 @@ export async function createServer() {
     options: {
       tags: ['api', 'certificates'],
       description: 'Returns certificate metadata'
+    }
+  })
+
+  // Toppan certificate-service template endpoint
+  server.route({
+    method: 'GET',
+    path: '/certificates/toppan/{templateType}/{filename}',
+    handler: toppanTemplateHandler,
+    options: {
+      auth: false, // Certificate-service needs to access without auth
+      tags: ['api', 'certificates', 'toppan'],
+      description: 'Serves ElmLayout templates and images for Toppan certificate-service'
+    }
+  })
+
+  // Certificate configuration endpoint (used by gateway)
+  server.route({
+    method: 'GET',
+    path: '/certificate-config',
+    handler: certificateConfigHandler,
+    options: {
+      auth: false, // Gateway needs to access without auth
+      tags: ['api', 'certificates', 'config'],
+      description: 'Returns country-specific certificate configuration for gateway'
     }
   })
 
