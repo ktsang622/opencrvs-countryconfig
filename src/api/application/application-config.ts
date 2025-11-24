@@ -47,7 +47,7 @@ export const applicationConfig = {
     PRINT_DECLARATION: false,
     DATE_OF_BIRTH_UNKNOWN: true,
     ENHANCED_DOCUMENT_VIEWER: true,
-    USE_CERTIFICATE_SERVICE: true // Enable Toppan certificate-service for server-side PDF generation with digital signatures
+    USE_CERTIFICATE_SERVICE: false // Enable Toppan certificate-service for server-side PDF generation with digital signatures
   },
   USER_NOTIFICATION_DELIVERY_METHOD: 'email', // or 'sms', or '' ... You can use 'sms' for WhatsApp
   INFORMANT_NOTIFICATION_DELIVERY_METHOD: 'email', // or 'sms', or '' ... You can use 'sms' for WhatsApp
