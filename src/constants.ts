@@ -30,3 +30,6 @@ export const CHECK_INVALID_TOKEN = env.CHECK_INVALID_TOKEN
 
 export const PRODUCTION = env.isProd
 export const QA_ENV = env.QA_ENV
+
+// Certificate-service configuration
+export const CERTIFICATE_SERVICE_URL = env.CERTIFICATE_SERVICE_URL

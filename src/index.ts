@@ -52,7 +52,6 @@ import { formHandler } from '@countryconfig/form'
 import { locationsHandler } from './data-seeding/locations/handler'
 import { certificateHandler } from './api/certificates/handler'
 import { toppanTemplateHandler } from './api/certificates/toppan-handler'
-import { toppanPrintHandlerV2 as toppanPrintHandler } from './api/certificates/toppan-print-handler-v2'
 import { certificateConfigHandler } from './api/certificates/config'
 import { rolesHandler } from './data-seeding/roles/handler'
 import { usersHandler } from './data-seeding/employees/handler'
@@ -286,17 +285,8 @@ export async function createServer() {
     }
   })
 
-  // Toppan certificate-service print endpoint (DEPRECATED - use gateway GraphQL instead)
-  server.route({
-    method: 'POST',
-    path: '/certificates/toppan/print',
-    handler: toppanPrintHandler,
-    options: {
-      tags: ['api', 'certificates', 'toppan', 'print'],
-      description:
-        'Generates certificate PDF via Toppan certificate-service (DEPRECATED)'
-    }
-  })
+  // NOTE: Certificate generation is now handled by Gateway → certificate-service directly
+  // The countryconfig only provides configuration and templates
 
   // Certificate configuration endpoint (used by gateway)
   server.route({

@@ -30,5 +30,10 @@ export const env = cleanEnv(process.env, {
   CONFIRM_REGISTRATION_URL: url({
     devDefault: 'http://localhost:5050/confirm/registration'
   }),
+  CERTIFICATE_SERVICE_URL: url({
+    devDefault: 'http://localhost:5000',
+    default: 'http://certificate-service:5000',
+    desc: 'URL for Toppan certificate-service API (internal only)'
+  }),
   QA_ENV: bool({ default: false })
 })
