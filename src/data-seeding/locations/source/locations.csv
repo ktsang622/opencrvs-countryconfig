@@ -1,35 +1,8 @@
 admin2Name_en,admin2Name_alias,admin2Pcode,admin1Name_en,admin1Name_alias,admin1Pcode,admin0Name_en,admin0Name_alias,admin0Pcode
-Ibombo,Ibombo,oEBf29y8JP8,Central,Central,AWn3s2RqgAN,Farajaland,Farajaland,FAR
-Ilanga,Ilanga,HPGiE9Jjh2r,Sulaka,Sulaka,KozcEjeTyuD,Farajaland,Farajaland,FAR
-Embe,Embe,BxrIbNW7f3K,Pualula,Pualula,B1u1bVtIA92,Farajaland,Farajaland,FAR
-Ama,Ama,SQT8xjbvWwf,Chuminga,Chuminga,dbTLdTi7s8F,Farajaland,Farajaland,FAR
-Isamba,Isamba,ntoX1PkiWri,Central,Central,AWn3s2RqgAN,Farajaland,Farajaland,FAR
-Irundu,Irundu,SvFNQpplnch,Sulaka,Sulaka,KozcEjeTyuD,Farajaland,Farajaland,FAR
-Ienge,Ienge,NLjvK1QsrN3,Pualula,Pualula,B1u1bVtIA92,Farajaland,Farajaland,FAR
-Nsali,Nsali,hywxVKv48Xp,Chuminga,Chuminga,dbTLdTi7s8F,Farajaland,Farajaland,FAR
-Itambo,Itambo,QTtxiWj8ONP,Central,Central,AWn3s2RqgAN,Farajaland,Farajaland,FAR
-Zobwe,Zobwe,Oapn6R4rt3D,Sulaka,Sulaka,KozcEjeTyuD,Farajaland,Farajaland,FAR
-Funabuli,Funabuli,idR0pJWLqcR,Pualula,Pualula,B1u1bVtIA92,Farajaland,Farajaland,FAR
-Soka,Soka,jCJxK8sFH40,Chuminga,Chuminga,dbTLdTi7s8F,Farajaland,Farajaland,FAR
-Ezhi,Ezhi,ydyJb1RAy4U,Central,Central,AWn3s2RqgAN,Farajaland,Farajaland,FAR
-Afue,Afue,nO68NTtcdw2,Sulaka,Sulaka,KozcEjeTyuD,Farajaland,Farajaland,FAR
-Pili,Pili,FuvOOwvBw0p,Pualula,Pualula,B1u1bVtIA92,Farajaland,Farajaland,FAR
-Chibiya,Chibiya,R22tRIhdm5Y,Chuminga,Chuminga,dbTLdTi7s8F,Farajaland,Farajaland,FAR
-St. John's City,St. John's Capital,ATG-STJ-CAP,St. John,St. John Parish,ATG-STJ,Antigua and Barbuda,ATG,ATG
-All Saints,All Saints,ATG-STP-ALS,St. Paul,St. Paul Parish,ATG-STP,Antigua and Barbuda,ATG,ATG
-Falmouth,Falmouth,ATG-STP-FAL,St. Paul,St. Paul Parish,ATG-STP,Antigua and Barbuda,ATG,ATG
-Liberta,Liberta,ATG-STP-LIB,St. Paul,St. Paul Parish,ATG-STP,Antigua and Barbuda,ATG,ATG
-English Harbour,English Harbour,ATG-STP-ENH,St. Paul,St. Paul Parish,ATG-STP,Antigua and Barbuda,ATG,ATG
-Parham,Parham,ATG-PTR-PAR,St. Peter,St. Peter Parish,ATG-PTR,Antigua and Barbuda,ATG,ATG
-Pares,Pares,ATG-PTR-PRS,St. Peter,St. Peter Parish,ATG-PTR,Antigua and Barbuda,ATG,ATG
-Willikies,Willikies,ATG-PTR-WIL,St. Peter,St. Peter Parish,ATG-PTR,Antigua and Barbuda,ATG,ATG
-Potters Village,Potters,ATG-GEO-POT,St. George,St. George Parish,ATG-GEO,Antigua and Barbuda,ATG,ATG
-Fitches Creek,Fitches Creek,ATG-GEO-FIT,St. George,St. George Parish,ATG-GEO,Antigua and Barbuda,ATG,ATG
-Piggotts,Piggotts,ATG-GEO-PIG,St. George,St. George Parish,ATG-GEO,Antigua and Barbuda,ATG,ATG
-Bolans,Bolans,ATG-MAR-BOL,St. Mary,St. Mary Parish,ATG-MAR,Antigua and Barbuda,ATG,ATG
-Jennings,Jennings,ATG-MAR-JEN,St. Mary,St. Mary Parish,ATG-MAR,Antigua and Barbuda,ATG,ATG
-Old Road,Old Road,ATG-MAR-OLD,St. Mary,St. Mary Parish,ATG-MAR,Antigua and Barbuda,ATG,ATG
-Freetown,Freetown,ATG-PHL-FRE,St. Philip,St. Philip Parish,ATG-PHL,Antigua and Barbuda,ATG,ATG
-Newfield,Newfield,ATG-PHL-NEW,St. Philip,St. Philip Parish,ATG-PHL,Antigua and Barbuda,ATG,ATG
-Bethesda,Bethesda,ATG-PHL-BET,St. Philip,St. Philip Parish,ATG-PHL,Antigua and Barbuda,ATG,ATG
-Codrington,Codrington,ATG-BAR-COD,Barbuda,Barbuda,ATG-BAR,Antigua and Barbuda,ATG,ATG
+Holy Trinity,Holy Trinity,ATG-BARBUDA-HOLY_TRINITY,Barbuda,Barbuda,ATG-BARBUDA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint George,Saint George,ATG-ANTIGUA-SAINT_GEORGE,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint John,Saint John,ATG-ANTIGUA-SAINT_JOHN,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint Mary,Saint Mary,ATG-ANTIGUA-SAINT_MARY,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint Paul,Saint Paul,ATG-ANTIGUA-SAINT_PAUL,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint Peter,Saint Peter,ATG-ANTIGUA-SAINT_PETER,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG
+Saint Philip,Saint Philip,ATG-ANTIGUA-SAINT_PHILIP,Antigua,Antigua,ATG-ANTIGUA,Antigua and Barbuda,Antigua and Barbuda,ATG

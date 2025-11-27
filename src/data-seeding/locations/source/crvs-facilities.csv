@@ -1,26 +1,8 @@
 id,name,partOf,locationType
-2OKicPQMNI,HQ Office,Location/BxrIbNW7f3K,CRVS_OFFICE
-JEhYJ82xRI,Isamba District Office,Location/ntoX1PkiWri,CRVS_OFFICE
-JWMRGwDBXK,Ibombo District Office,Location/oEBf29y8JP8,CRVS_OFFICE
-HKASqwkASD,Itambo District Office,Location/QTtxiWj8ONP,CRVS_OFFICE
-eaBXhNiLMp,Ezhi District Office,Location/ydyJb1RAy4U,CRVS_OFFICE
-okQp4uKCz0,Ilanga District Office,Location/HPGiE9Jjh2r,CRVS_OFFICE
-R5n2eHaSpB,Irundu District Office,Location/SvFNQpplnch,CRVS_OFFICE
-GzanivmNaP,Zobwe District Office,Location/Oapn6R4rt3D,CRVS_OFFICE
-2stAtvOCwl,Afue District Office,Location/nO68NTtcdw2,CRVS_OFFICE
-p9TC08l373,Embe District Office,Location/BxrIbNW7f3K,CRVS_OFFICE
-Hal1YwlBw7,Ienge District Office,Location/NLjvK1QsrN3,CRVS_OFFICE
-OgMqVlKHoN,Funabuli District Office,Location/idR0pJWLqcR,CRVS_OFFICE
-FHTLilSEgD,Pili District Office,Location/FuvOOwvBw0p,CRVS_OFFICE
-jMEPmtRKQ9,Ama District Office,Location/SQT8xjbvWwf,CRVS_OFFICE
-hfFdA2JI3T,Nsali District Office,Location/hywxVKv48Xp,CRVS_OFFICE
-mNCAv7oKj8,Soka District Office,Location/jCJxK8sFH40,CRVS_OFFICE
-H0EaOnzz0a,Chibiya District Office,Location/R22tRIhdm5Y,CRVS_OFFICE
-CRVS_OFFICE_ATG_CENTRAL,Central Registration Office,Location/ATG-STJ-CAP,CRVS_OFFICE
-CRVS_OFFICE_ATG_STJOHN,St. John's District Office,Location/ATG-STJ-CAP,CRVS_OFFICE
-CRVS_OFFICE_ATG_STPAUL,St. Paul's District Office,Location/ATG-STP-FAL,CRVS_OFFICE
-CRVS_OFFICE_ATG_STPETER,St. Peter's District Office,Location/ATG-PTR-PAR,CRVS_OFFICE
-CRVS_OFFICE_ATG_STGEORGE,St. George's District Office,Location/ATG-GEO-POT,CRVS_OFFICE
-CRVS_OFFICE_ATG_STMARY,St. Mary's District Office,Location/ATG-MAR-BOL,CRVS_OFFICE
-CRVS_OFFICE_ATG_STPHILIP,St. Philip's District Office,Location/ATG-PHL-FRE,CRVS_OFFICE
-CRVS_OFFICE_ATG_BARBUDA,Barbuda Registration Office,Location/ATG-BAR-COD,CRVS_OFFICE
+HOLY_TRINITY,Holy Trinity Civil Registry,Location/ATG-BARBUDA-HOLY_TRINITY,CRVS_OFFICE
+SAINT_GEORGE,Saint George Civil Registry,Location/ATG-ANTIGUA-SAINT_GEORGE,CRVS_OFFICE
+SAINT_JOHN,Saint John Civil Registry,Location/ATG-ANTIGUA-SAINT_JOHN,CRVS_OFFICE
+SAINT_MARY,Saint Mary Civil Registry,Location/ATG-ANTIGUA-SAINT_MARY,CRVS_OFFICE
+SAINT_PAUL,Saint Paul Civil Registry,Location/ATG-ANTIGUA-SAINT_PAUL,CRVS_OFFICE
+SAINT_PETER,Saint Peter Civil Registry,Location/ATG-ANTIGUA-SAINT_PETER,CRVS_OFFICE
+SAINT_PHILIP,Saint Philip Civil Registry,Location/ATG-ANTIGUA-SAINT_PHILIP,CRVS_OFFICE

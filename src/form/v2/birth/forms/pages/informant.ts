@@ -152,6 +152,23 @@ export const informant = defineFormPage({
       ]
     },
     {
+      id: `${PersonType.informant}.middlename`,
+      configuration: { maxLength: MAX_NAME_LENGTH },
+      type: FieldType.TEXT,
+      required: false,
+      label: {
+        defaultMessage: 'Middle name',
+        description: 'This is the label for the field',
+        id: `v2.event.birth.action.declare.form.section.person.field.middlename.label`
+      },
+      conditionals: [
+        {
+          type: ConditionalType.SHOW,
+          conditional: informantOtherThanParent
+        }
+      ]
+    },
+    {
       id: `${PersonType.informant}.surname`,
       configuration: { maxLength: MAX_NAME_LENGTH },
       type: FieldType.TEXT,
@@ -266,7 +283,7 @@ export const informant = defineFormPage({
           conditional: informantOtherThanParent
         }
       ],
-      defaultValue: 'FAR'
+      defaultValue: 'ATG'
     },
     {
       id: `${PersonType.informant}.idType`,
@@ -401,7 +418,7 @@ export const informant = defineFormPage({
         }
       ],
       defaultValue: {
-        country: 'FAR',
+        country: 'ATG',
         addressType: AddressType.DOMESTIC,
         province: '$user.province',
         district: '$user.district',

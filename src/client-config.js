@@ -18,15 +18,16 @@ window.config = {
   COUNTRY_CONFIG_URL: 'http://localhost:3040',
   // Country code in uppercase ALPHA-3 format
   COUNTRY: 'ATG',
-  LANGUAGES: 'en,fr',
+  LANGUAGES: 'en',
   SENTRY: '',
-  // Use the values in comments when Metabase is running locally
-  // http://localhost:4444/public/dashboard/acae0527-74be-4804-a3ee-f8b3c9c8784c#bordered=false&titled=false&refresh=300
-  LEADERBOARDS_DASHBOARD_URL: '',
-  // http://localhost:4444/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821#bordered=false&titled=false&refresh=300
-  REGISTRATIONS_DASHBOARD_URL: '',
-  // http://localhost:4444/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300
-  STATISTICS_DASHBOARD_URL: '',
+  // Shared Metabase dashboards (local public links)
+  // You can append query params like: #bordered=false&titled=false&refresh=300
+  LEADERBOARDS_DASHBOARD_URL:
+    'http://localhost:4444/public/dashboard/acae0527-74be-4804-a3ee-f8b3c9c8784c',
+  REGISTRATIONS_DASHBOARD_URL:
+    'http://localhost:4444/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821',
+  STATISTICS_DASHBOARD_URL:
+    'http://localhost:4444/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca',
   FAMILY_TREE_URL: 'http://localhost:3889/familyTree',
   TOPPAN_SERVICE_URL: 'http://localhost:7070',
   DEBUG: true,

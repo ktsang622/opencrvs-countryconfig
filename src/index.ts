@@ -281,7 +281,7 @@ export async function createServer() {
     options: {
       auth: false, // Certificate-service needs to access without auth
       tags: ['api', 'certificates', 'toppan'],
-      description: 'Serves ElmLayout templates for Toppan certificate-service'
+      description: 'Serves ElmLayout templates and images for Toppan certificate-service'
     }
   })
 
@@ -296,7 +296,7 @@ export async function createServer() {
     options: {
       auth: false, // Gateway needs to access without auth
       tags: ['api', 'certificates', 'config'],
-      description: 'Returns country-specific certificate configuration'
+      description: 'Returns country-specific certificate configuration for gateway'
     }
   })
 

@@ -22,7 +22,7 @@ window.config = {
   COUNTRY_CONFIG_URL: `${scheme}//countryconfig.${hostname}`,
   // Country code in uppercase ALPHA-3 format
   COUNTRY: 'ATG',
-  LANGUAGES: 'en,fr',
+  LANGUAGES: 'en',
   SENTRY: sentry,
   LEADERBOARDS_DASHBOARD_URL:
     `${scheme}//metabase.${hostname}/public/dashboard/acae0527-74be-4804-a3ee-f8b3c9c8784c#bordered=false&titled=false&refresh=300`,
@@ -33,6 +33,7 @@ window.config = {
   FAMILY_TREE_URL: `${scheme}//toppan.${hostname}/familyTree`,
   TOPPAN_SERVICE_URL: `${scheme}//gateway.${hostname}`,
   FEATURES: {
+    USE_CERTIFICATE_SERVICE: false, // Set to true in production to enable server-side PDF generation
     ENHANCED_DOCUMENT_VIEWER: true
   }
 }

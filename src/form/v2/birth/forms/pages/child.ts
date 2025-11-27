@@ -200,6 +200,18 @@ export const child = defineFormPage({
       validation: [invalidNameValidator('child.firstname')]
     },
     {
+      id: 'child.middlename',
+      type: FieldType.TEXT,
+      configuration: { maxLength: MAX_NAME_LENGTH },
+      required: false,
+      label: {
+        defaultMessage: 'Middle name',
+        description: 'This is the label for the field',
+        id: 'v2.event.birth.action.declare.form.section.child.field.middlename.label'
+      },
+      validation: [invalidNameValidator('child.middlename')]
+    },
+    {
       id: 'child.surname',
       type: FieldType.TEXT,
       configuration: { maxLength: MAX_NAME_LENGTH },
@@ -318,7 +330,7 @@ export const child = defineFormPage({
         }
       ],
       defaultValue: {
-        country: 'FAR',
+        country: 'ATG',
         addressType: AddressType.DOMESTIC,
         province: '$user.province',
         district: '$user.district',
@@ -341,7 +353,7 @@ export const child = defineFormPage({
         }
       ],
       defaultValue: {
-        country: 'FAR',
+        country: 'ATG',
         addressType: AddressType.DOMESTIC,
         province: '$user.province',
         district: '$user.district',

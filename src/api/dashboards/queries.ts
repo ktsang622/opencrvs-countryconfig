@@ -44,6 +44,8 @@ const registrations = ({ lastUpdatedAt }: { lastUpdatedAt: string }) => ({
       }
     },
     { $unwind: '$composition' },
+    // Restrict to Death compositions (aligns with VS export logic using titles)
+    { $match: { 'composition.title': 'Death Declaration' } },
     { $addFields: { 'composition.latestTask': '$$ROOT' } },
     { $replaceRoot: { newRoot: '$composition' } },
     {
@@ -787,6 +789,112 @@ export function defaultQueries() {
   return [
     registrations({ lastUpdatedAt }),
     declarations({ lastUpdatedAt }),
-    populationEstimatesPerDay()
+    populationEstimatesPerDay(),
+    // Country override: also include Death registrations so Event filter works
+    deathRegistrations({ lastUpdatedAt })
   ]
 }
+
+// Minimal Death pipeline mirroring registrations enough for maps and counts
+const deathRegistrations = ({ lastUpdatedAt }: { lastUpdatedAt: string }) => ({
+  collection: 'Task',
+  aggregate: [
+    { $match: { 'meta.lastUpdated': { $gte: lastUpdatedAt } } },
+    { $unwind: '$businessStatus.coding' },
+    {
+      $match: {
+        'businessStatus.coding.code': { $in: ['CERTIFIED', 'REGISTERED', 'ISSUED'] }
+      }
+    },
+    {
+      $addFields: {
+        compositionId: { $arrayElemAt: [{ $split: ['$focus.reference', '/'] }, 1] }
+      }
+    },
+    { $lookup: { from: 'Composition', localField: 'compositionId', foreignField: 'id', as: 'composition' } },
+    { $unwind: '$composition' },
+    { $addFields: { 'composition.latestTask': '$$ROOT' } },
+    { $replaceRoot: { newRoot: '$composition' } },
+    // Build allTasks, firstTask, registerTask similar to birth pipeline
+    { $lookup: { from: 'Task', localField: 'latestTask.focus.reference', foreignField: 'focus.reference', as: 'task' } },
+    { $lookup: { from: 'Task_history', localField: 'latestTask.focus.reference', foreignField: 'focus.reference', as: 'task_history' } },
+    { $addFields: { allTasks: { $concatArrays: ['$task_history', '$task'] } } },
+    {
+      $addFields: {
+        registerTask: {
+          $arrayElemAt: [
+            {
+              $filter: {
+                input: '$allTasks',
+                cond: {
+                  $eq: [
+                    'REGISTERED',
+                    { $let: { vars: { coding: { $arrayElemAt: ['$$this.businessStatus.coding', 0] } }, in: '$$coding.code' } }
+                  ]
+                }
+              }
+            },
+            0
+          ]
+        },
+        firstTask: {
+          $arrayElemAt: [
+            {
+              $filter: {
+                input: '$allTasks',
+                cond: { $eq: [{ $min: '$allTasks.lastModified' }, '$$this.lastModified'] }
+              }
+            },
+            0
+          ]
+        }
+      }
+    },
+    // Map extensions on firstTask to resolve office, then district/state
+    {
+      $addFields: {
+        'firstTask.extensionsObject': {
+          $arrayToObject: {
+            $map: {
+              input: '$firstTask.extension',
+              as: 'el',
+              in: [
+                { $replaceOne: { input: '$$el.url', find: 'http://opencrvs.org/specs/extension/', replacement: '' } },
+                { $arrayElemAt: [{ $split: ['$$el.valueReference.reference', '/'] }, 1] }
+              ]
+            }
+          }
+        }
+      }
+    },
+    { $lookup: { from: 'Location', localField: 'firstTask.extensionsObject.regLastOffice', foreignField: 'id', as: 'office' } },
+    { $unwind: '$office' },
+    { $addFields: { 'office.district': { $arrayElemAt: [{ $split: ['$office.partOf.reference', '/'] }, 1] } } },
+    { $lookup: { from: 'Location', localField: 'office.district', foreignField: 'id', as: 'district' } },
+    { $unwind: '$district' },
+    { $addFields: { 'district.state': { $arrayElemAt: [{ $split: ['$district.partOf.reference', '/'] }, 1] } } },
+    { $lookup: { from: 'Location', localField: 'district.state', foreignField: 'id', as: 'state' } },
+    { $unwind: '$state' },
+    {
+      $project: {
+        _id: 1,
+        id: 1,
+        event: 'Death',
+        officeName: '$office.name',
+        districtName: '$district.name',
+        stateName: '$state.name',
+        createdAt: { $dateFromString: { dateString: '$firstTask.lastModified' } },
+        registeredAt: { $dateFromString: { dateString: '$registerTask.lastModified' } },
+        status: '$latestTask.businessStatus.coding.code'
+      }
+    },
+    {
+      $merge: {
+        into: { db: 'performance', coll: 'registrations' },
+        on: '_id',
+        whenMatched: 'replace',
+        whenNotMatched: 'insert'
+      }
+    }
+  ]
+})

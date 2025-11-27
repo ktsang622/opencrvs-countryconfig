@@ -153,7 +153,7 @@ BirthCertificate
 			_Font = cFontBody
 			^BackParish:				_X = cXRightEdge; 	_Y = 255; 	_Source=Parish;  _XAlign=Right; _Back=True
 			^BackRegistrationNumber:	_X = cXRightEdge; 	_Y = 285; 	_Source=RegistrationNumber;  _XAlign=Right
-			^QrCodeBack:				_X = 610; 	_Y = 1550; 	_Source=QrCode; _Image=True; _Back=True
+			^QrCodeBack:				_X = 600; 	_Y = 1535; 	_Source=QrCode; _Image=True; _Back=True
 		~BackText
 	~Back
 	
