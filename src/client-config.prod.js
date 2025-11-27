@@ -30,5 +30,9 @@ window.config = {
     `${scheme}//metabase.${hostname}/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821#bordered=false&titled=false&refresh=300`,
   STATISTICS_DASHBOARD_URL:
     `${scheme}//metabase.${hostname}/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300`,
-  FEATURES: {}
+  FAMILY_TREE_URL: `${scheme}//toppan.${hostname}/familyTree`,
+  TOPPAN_SERVICE_URL: `${scheme}//gateway.${hostname}`,
+  FEATURES: {
+    ENHANCED_DOCUMENT_VIEWER: true
+  }
 }

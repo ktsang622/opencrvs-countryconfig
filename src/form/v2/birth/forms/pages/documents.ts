@@ -60,10 +60,9 @@ const DEFAULT_FILE_CONFIGURATION = {
   acceptedFileTypes: [
     ImageMimeType.enum['image/jpeg'],
     ImageMimeType.enum['image/png'],
-    ImageMimeType.enum['image/jpg']
+    ImageMimeType.enum['image/jpg'],
+    'application/pdf' as const
   ]
-  // TODO: Add PDF support when toolkit schema supports 'application/pdf'
-  // Currently blocked by Zod schema validation in @opencrvs/toolkit
 }
 
 const idTypeOptions = createSelectOptions(IdType, idTypeMessageDescriptors)
