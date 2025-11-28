@@ -8,6 +8,7 @@ ENV NPM_CONFIG_LOGLEVEL=warn
 COPY package.json package.json
 COPY tsconfig.json tsconfig.json
 COPY yarn.lock yarn.lock
+COPY opencrvs-toolkit.tgz opencrvs-toolkit.tgz
 COPY src src
 
 # Install all dependencies (including dev) for development/production flexibility

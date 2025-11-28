@@ -98,6 +98,20 @@ export function onRegisterHandler(
  * For registration actions specifically, you must provide a registration number when accepting.
  * See the Action Confirmation documentation for more details on asynchronous confirmation flows.
  */
+type MutationProcedure = { mutate: (input: any) => Promise<any> }
+
+function ensureMutation(procedure: unknown, label: string): MutationProcedure {
+  if (
+    typeof procedure !== 'object' ||
+    procedure === null ||
+    typeof (procedure as Record<string, unknown>).mutate !== 'function'
+  ) {
+    throw new Error(`Expected mutation procedure for ${label}`)
+  }
+
+  return procedure as MutationProcedure
+}
+
 async function acceptRequestedRegistration(
   token: string,
   eventId: string,
@@ -107,7 +121,12 @@ async function acceptRequestedRegistration(
   const url = new URL('events', GATEWAY_URL).toString()
   const client = createClient(url, `Bearer ${token}`)
 
-  const event = await client.event.actions.register.accept.mutate({
+  const acceptProcedure = ensureMutation(
+    client.event.actions.register.accept,
+    'event.actions.register.accept'
+  )
+
+  const event = await acceptProcedure.mutate({
     ...action,
     transactionId: uuidv4(),
     eventId,
@@ -133,7 +152,12 @@ async function rejectRequestedRegistration(
   const url = new URL('events', GATEWAY_URL).toString()
   const client = createClient(url, `Bearer ${token}`)
 
-  const event = await client.event.actions.register.reject.mutate({
+  const rejectProcedure = ensureMutation(
+    client.event.actions.register.reject,
+    'event.actions.register.reject'
+  )
+
+  const event = await rejectProcedure.mutate({
     transactionId: uuidv4(),
     eventId,
     actionId

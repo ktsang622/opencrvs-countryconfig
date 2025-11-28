@@ -834,13 +834,13 @@
   dependencies:
     "@octokit/openapi-types" "^18.0.0"
 
-"@opencrvs/toolkit@1.8.0-rc.5169255":
-  version "1.8.0-rc.5169255"
-  resolved "https://registry.yarnpkg.com/@opencrvs/toolkit/-/toolkit-1.8.0-rc.5169255.tgz#529fc428ef5e18065e8f5cc45dce62fa3d028859"
-  integrity sha512-cYlaOTyTrmepH2Vl7dBNdARWKiUBkMUYKE45ENpiXegNjwIt/WK0AsL0zOnw4pZsCF/ZT/NqYcZRV8DN0JupEA==
+"@opencrvs/toolkit@file:opencrvs-toolkit.tgz":
+  version "1.8.2"
+  resolved "file:opencrvs-toolkit.tgz#c4a5c0b82945fc87b219e214f0c2eb99ab69c851"
+  integrity sha512-3j/E8GOCAD1krnPQErq0h5xTaSmB6tZlKGE5DevmiyqgbIOfgAnjfvsUQxtr3b92+CdN0d7kNKNEnuPLOo8n+w==
   dependencies:
-    "@trpc/client" "^11.0.0-rc.648"
-    "@trpc/server" "^11.0.0-rc.532"
+    "@trpc/client" "^11.0.0-rc.804"
+    "@trpc/server" "^11.0.0-rc.804"
     ajv "^8.17.1"
     ajv-formats "^3.0.1"
     superjson "1.9.0-0"
@@ -1016,15 +1016,15 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@trpc/client@^11.0.0-rc.648":
-  version "11.0.0-rc.711"
-  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-11.0.0-rc.711.tgz#6d07b6fa8221fe0aa886495a507ca34575a32a25"
-  integrity sha512-m3uFfgEW+hbxA2IS4q238fTfT4hJFwz6Y4FQUfrgj3395W1afaOoUbF3S970jG9Gf/VTlIfTG8pQ1sTrZ7Uwug==
+"@trpc/client@^11.0.0-rc.804":
+  version "11.7.2"
+  resolved "https://registry.yarnpkg.com/@trpc/client/-/client-11.7.2.tgz#8453748c822c4a5444aee45edee86081805af5c6"
+  integrity sha512-OQxqUMfpDvjcszo9dbnqWQXnW2L5IbrKSz2H7l8s+mVM3EvYw7ztQ/gjFIN3iy0NcamiQfd4eE6qjcb9Lm+63A==
 
-"@trpc/server@^11.0.0-rc.532":
-  version "11.0.0-rc.711"
-  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-11.0.0-rc.711.tgz#a9a0db9eea2bdc0fa705b1459f03325e54202add"
-  integrity sha512-dGaMXLFJaLg1XWGRQ3ZQp2dkq7Od6u+9DOrp+fn0s88sZW57eEhX2MOxWpFp5z9xLZNN0Hq5G6/4QtR0iMUVcw==
+"@trpc/server@^11.0.0-rc.804":
+  version "11.7.2"
+  resolved "https://registry.yarnpkg.com/@trpc/server/-/server-11.7.2.tgz#4ab897689ec91d0d213d6dc6a79ac1dcde782513"
+  integrity sha512-AgB26PXY69sckherIhCacKLY49rxE2XP5h38vr/KMZTbLCL1p8IuIoKPjALTcugC2kbyQ7Lbqo2JDVfRSmPmfQ==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
