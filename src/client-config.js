@@ -34,6 +34,7 @@ window.config = {
   FEATURES: {
     // The V2_EVENTS variable is passed down from src/index.ts:309
     V2_EVENTS: {{ V2_EVENTS }},
-    ENHANCED_DOCUMENT_VIEWER: true
+    ENHANCED_DOCUMENT_VIEWER: true,
+    GOID_ENABLED: true
   }
 }

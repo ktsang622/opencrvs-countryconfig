@@ -80,6 +80,7 @@ import { getSectionMapping } from '@countryconfig/utils/mapping/section/birth/ma
 import { getCommonSectionMapping } from '@countryconfig/utils/mapping/field-mapping-utils'
 import {
   createExtLookupButton,
+  createGoIDVerifyButton,
   createUnlinkButton,
   createSelectedPersonIdField,
   getReasonForLateRegistration
@@ -327,6 +328,7 @@ export const birthForm: ISerializedForm = {
             ),
             getReasonNotExisting(certificateHandlebars.motherReasonNotApplying), // Strongly recommend is required if you want to register abandoned / orphaned children!
             createExtLookupButton('motherSearch', 'mother'),
+            createGoIDVerifyButton('motherGoIDVerify', 'mother'),
             createUnlinkButton('motherUnlink', 'mother'),
             createSelectedPersonIdField('mother'),
             {
@@ -439,6 +441,7 @@ export const birthForm: ISerializedForm = {
             ),
             getReasonNotExisting('fatherReasonNotApplying'), // Strongly recommend is required if you want to register abandoned / orphaned children!
             createExtLookupButton('fatherSearch', 'father'),
+            createGoIDVerifyButton('fatherGoIDVerify', 'father'),
             createUnlinkButton('fatherUnlink', 'father'),
             createSelectedPersonIdField('father'),
             {

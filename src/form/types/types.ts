@@ -153,6 +153,7 @@ export const ID_READER = 'ID_READER'
 export const ID_VERIFICATION_BANNER = 'ID_VERIFICATION_BANNER'
 export const LOADER = 'LOADER'
 export const EXT_LOOKUP_BUTTON = 'EXT_LOOKUP_BUTTON'
+export const GOID_VERIFY_BUTTON = 'GOID_VERIFY_BUTTON'
 
 export enum RadioSize {
   LARGE = 'large',
@@ -470,6 +471,15 @@ export interface IExtLookupButtonField extends IFormFieldBase {
   onPersonSelect?: (person: any) => void
 }
 
+export interface IGoIDVerifyButtonField extends IFormFieldBase {
+  type: typeof GOID_VERIFY_BUTTON
+  modalTitle: MessageDescriptor
+  successTitle?: MessageDescriptor
+  errorTitle?: MessageDescriptor
+  queryMap?: ISerializedQueryMap
+  querySelectorInput?: IFieldInput
+}
+
 export interface ILoaderButton extends IFormFieldBase {
   type: typeof FETCH_BUTTON
   queryMap: IQueryMap
@@ -610,6 +620,7 @@ export type IFormField =
   | IDynamicListFormField
   | ILoaderButton
   | IExtLookupButtonField
+  | IGoIDVerifyButtonField
   | ISimpleDocumentUploaderFormField
   | ILocationSearchInputFormField
   | IDateRangePickerFormField

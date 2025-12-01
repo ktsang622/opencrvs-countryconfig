@@ -25,15 +25,16 @@ window.config = {
   LANGUAGES: 'en',
   SENTRY: sentry,
   LEADERBOARDS_DASHBOARD_URL:
-    `${scheme}//metabase.${hostname}/public/dashboard/acae0527-74be-4804-a3ee-f8b3c9c8784c#bordered=false&titled=false&refresh=300`,
+    `${scheme}//dashboard.${hostname}/public/dashboard/acae0527-74be-4804-a3ee-f8b3c9c8784c#bordered=false&titled=false&refresh=300`,
   REGISTRATIONS_DASHBOARD_URL:
-    `${scheme}//metabase.${hostname}/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821#bordered=false&titled=false&refresh=300`,
+    `${scheme}//dashboard.${hostname}/public/dashboard/fec78656-e4f9-4b51-b540-0fed81dbd821#bordered=false&titled=false&refresh=300`,
   STATISTICS_DASHBOARD_URL:
-    `${scheme}//metabase.${hostname}/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300`,
+    `${scheme}//dashboard.${hostname}/public/dashboard/a17e9bc0-15a2-4bd1-92fa-ab0f346227ca#bordered=false&titled=false&refresh=300`,
   FAMILY_TREE_URL: `${scheme}//toppan.${hostname}/familyTree`,
   TOPPAN_SERVICE_URL: `${scheme}//gateway.${hostname}`,
   FEATURES: {
     USE_CERTIFICATE_SERVICE: false, // Set to true in production to enable server-side PDF generation
-    ENHANCED_DOCUMENT_VIEWER: true
+    ENHANCED_DOCUMENT_VIEWER: true,
+    GOID_ENABLED: true
   }
 }

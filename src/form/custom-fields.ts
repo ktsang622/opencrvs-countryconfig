@@ -476,3 +476,108 @@ export function createExtLookupButton(
     }
   }
 }
+
+// goID Verify Button - creates a button to verify identity via goID service
+export const GOID_VERIFY_BUTTON = 'GOID_VERIFY_BUTTON'
+
+export function createGoIDVerifyButton(
+  fieldName: string,
+  sectionId: string,
+  conditionals: Conditional[] = [],
+  event: string = 'birth',
+  requireDetailsExist: boolean = true
+): SerializedFormField {
+  const fieldId: string = `${event}.${sectionId}.${sectionId}-view-group.${fieldName}`
+
+  const baseConditionals = [
+    {
+      action: 'hide',
+      expression: 'values.searchPersonId'
+    },
+    registrarOnlyConditional
+  ]
+
+  // Only add detailsExist check if required
+  if (requireDetailsExist) {
+    baseConditionals.unshift({
+      action: 'hide',
+      expression: '!values.detailsExist'
+    })
+  }
+
+  return {
+    name: fieldName,
+    customQuestionMappingId: fieldId,
+    custom: true,
+    required: false,
+    type: GOID_VERIFY_BUTTON,
+    label: {
+      id: 'form.field.goidVerify.label',
+      description: 'Button to verify identity via goID',
+      defaultMessage: 'Verify with goID'
+    },
+    modalTitle: {
+      id: 'form.field.goidVerify.modalTitle',
+      description: 'Modal title for goID verification',
+      defaultMessage: 'Verify Identity with goID'
+    },
+    successTitle: {
+      id: 'form.field.goidVerify.success',
+      description: 'Success message for goID verification',
+      defaultMessage: 'Identity verified successfully'
+    },
+    errorTitle: {
+      id: 'form.field.goidVerify.error',
+      description: 'Error message for goID verification',
+      defaultMessage: 'Identity verification failed'
+    },
+    initialValue: '',
+    validator: [],
+    mapping: getCustomFieldMapping(fieldId),
+    conditionals: baseConditionals.concat(conditionals),
+    hideInPreview: true,
+    previewGroup: 'goidVerification',
+    queryMap: {
+      goidVerify: {
+        query: {
+          operation: 'goidVerifyOperation'
+        },
+        inputs: [
+          {
+            name: 'username',
+            valueField: 'username',
+            type: 'TEXT'
+          },
+          {
+            name: 'password',
+            valueField: 'password',
+            type: 'PASSWORD'
+          }
+        ],
+        modalInfoText: {
+          id: 'form.field.goidVerify.modalInfo',
+          description: 'Info text for goID verification modal',
+          defaultMessage: 'Enter your goID credentials to verify your identity'
+        },
+        errorText: {
+          id: 'form.field.goidVerify.queryError',
+          description: 'Query error for goID verification',
+          defaultMessage: 'Verification failed. Please check your credentials.'
+        },
+        networkErrorText: {
+          id: 'form.field.goidVerify.networkError',
+          description: 'Network error for goID verification',
+          defaultMessage: 'Unable to connect to goID service. Please try again.'
+        },
+        responseTransformer: {
+          operation: 'transformGoIDResponse'
+        }
+      }
+    },
+    querySelectorInput: {
+      name: 'username',
+      valueField: 'username',
+      type: 'TEXT'
+    }
+  }
+}
