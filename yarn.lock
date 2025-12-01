@@ -836,8 +836,8 @@
 
 "@opencrvs/toolkit@file:opencrvs-toolkit.tgz":
   version "1.8.2"
-  resolved "file:opencrvs-toolkit.tgz#c4a5c0b82945fc87b219e214f0c2eb99ab69c851"
-  integrity sha512-3j/E8GOCAD1krnPQErq0h5xTaSmB6tZlKGE5DevmiyqgbIOfgAnjfvsUQxtr3b92+CdN0d7kNKNEnuPLOo8n+w==
+  resolved "file:opencrvs-toolkit.tgz#4a723c40c2eba419e9ed78817ae54d2f91c7335b"
+  integrity sha512-naGFcRKGnwQI0nDAwfoRx7XAZOCzGOJ1EfD4waslbWD/n5H1DY/S4cYsc9GG7diY4nAzO27MKprSY2Ol0YPNLQ==
   dependencies:
     "@trpc/client" "^11.0.0-rc.804"
     "@trpc/server" "^11.0.0-rc.804"
